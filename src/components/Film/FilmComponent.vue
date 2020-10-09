@@ -1,12 +1,17 @@
 <template>
 	<div class="">
-
+		<FilmList />
 	</div>
 </template>
 
 <script>
+import FilmList from './FilmList';
+
 export default {
-	name: 'FilmComponent'
+	name: 'FilmComponent',
+	components: {
+		FilmList
+	}
 }
 </script>
 
