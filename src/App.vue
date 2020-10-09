@@ -1,15 +1,23 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/want">Хочу посмотреть</router-link> |
-      <router-link to="/already">Уже посмотрел</router-link>
-    </div>
+		<AppHeader />
     <transition name="fade" mode="out-in">
-      <router-view/>
+			<div class="container">
+				<router-view/>
+			</div>
     </transition>
   </div>
 </template>
+
+<script>
+import AppHeader from './components/partials/AppHeader';
+
+export default {
+	components: {
+		AppHeader
+	}
+}
+</script>
 
 <style lang="scss">
 #app {
