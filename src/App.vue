@@ -5,7 +5,9 @@
       <router-link to="/want">Хочу посмотреть</router-link> |
       <router-link to="/already">Уже посмотрел</router-link>
     </div>
-    <router-view/>
+    <transition name="fade" mode="out-in">
+      <router-view/>
+    </transition>
   </div>
 </template>
 
@@ -14,19 +16,6 @@
   font-family: Jost, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #303030;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+  color: #ffffff;
 }
 </style>
