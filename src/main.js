@@ -22,6 +22,7 @@ firebase.initializeApp(process.env.NODE_ENV === 'production' ? firebaseProdConfi
 const database = firebase.database();
 export { database };
 
+
 Vue.config.productionTip = false;
 
 new Vue({

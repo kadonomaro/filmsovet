@@ -15,6 +15,9 @@ import AppHeader from './components/partials/AppHeader';
 export default {
 	components: {
 		AppHeader
+	},
+	created() {
+		this.$store.dispatch('fetchData');
 	}
 }
 </script>
