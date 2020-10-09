@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
-    <h1>Уже посмотрел</h1>
+  <div class="page">
+    <h1 class="page__title">Уже посмотрел</h1>
   </div>
 </template>

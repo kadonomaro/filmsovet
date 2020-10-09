@@ -1,6 +1,8 @@
 <template>
   <header class="header">
-		<AppNavigation />
+		<div class="header__nav">
+			<AppNavigation />
+		</div>
   </header>
 </template>
 
@@ -17,7 +19,11 @@ export default {
 
 <style lang="scss">
 	.header {
-		padding: 15px;
+		padding: 20px 15px;
 		background-color: #101010;
+		&__nav {
+			display: flex;
+			justify-content: center;
+		}
 	}
 </style>
