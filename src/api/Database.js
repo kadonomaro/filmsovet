@@ -18,4 +18,12 @@ export class Database {
 			console.error(error);
 		}
 	}
+
+	async add(film) {
+		try {
+			await database.ref('films/').push(film);
+		} catch (error) {
+			console.error(error);
+		}
+	}
 }

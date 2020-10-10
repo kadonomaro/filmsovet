@@ -80,7 +80,7 @@ export default {
 		},
 
 		submitHandler(payload) {
-			console.log(payload);
+			this.$store.dispatch('addData', payload);
 		}
 	},
 	computed: {
