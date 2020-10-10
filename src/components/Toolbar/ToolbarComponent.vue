@@ -7,6 +7,7 @@
 					v-for="tag in getFilmsTags"
 					:key="tag"
 					:value="tag"
+					:selected="tag === getCurrentFilmsTag"
 				>{{ tag }}</option>
 			</select>
 			<button
@@ -84,7 +85,7 @@ export default {
 		}
 	},
 	computed: {
-		...mapGetters(['getFilmsTags'])
+		...mapGetters(['getFilmsTags', 'getCurrentFilmsTag'])
 	}
 }
 </script>

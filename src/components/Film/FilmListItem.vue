@@ -92,7 +92,7 @@ export default {
 			width: $square;
 			height: $square;
 			padding: 5px;
-			font-size: 36px;
+			font-size: 32px;
 			font-weight: bold;
 			line-height: $square;
 			text-align: center;
