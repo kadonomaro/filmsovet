@@ -9,10 +9,15 @@
 	border: none;
 	border-radius: 5px;
 	cursor: pointer;
-	transition: background-color 0.1s ease-in, transform 0.1s ease-in;
+	transition: background-color 0.1s ease-in;
 	&:hover {
 		background-color: darken($color: $color-accent, $amount: 5%);
-		transform: scale(1.05);
+	}
+}
+.button--danger {
+	background-color: $color-danger;
+	&:hover {
+		background-color: darken($color: $color-danger, $amount: 10%);
 	}
 }
 .button--auto-height {
@@ -26,4 +31,7 @@
 }
 .button---icon-plus {
 	background-image: url('~@/assets/icons/plus.svg');
+}
+.button---icon-cancel {
+	background-image: url('~@/assets/icons/cancel.svg');
 }
