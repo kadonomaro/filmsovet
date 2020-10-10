@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import { Database } from '../api/Database';
+import { unique } from '../helpers/array';
 
 Vue.use(Vuex);
 
@@ -54,29 +55,43 @@ export default new Vuex.Store({
 				description: 'В городском коллекторе группа следователей обнаруживает убитых подростков, которых никто никогда не разыскивал. Раскручивая шаг за шагом это дело, полицейские сталкиваются лицом к лицу с безусловным злом — водоворотом большого города, который засасывает и уничтожает слабых — тех, кого никто не любит и не ждет дома. Зло безнаказанно уничтожает людей, и каждый из героев столкнется с ним лично, заглянет внутрь себя, чтобы встретиться с собственными демонами и страхами.',
 				tags: ['триллер', 'драма', 'детектив', 'криминал']
 			}
-		]
+		],
+		options: {
+			type: 'all'
+		}
   },
   mutations: {
+		CHANGE_TYPE(state, type) {
+			state.options.type = type;
+		}
   },
   actions: {
 		async fetchData({ commit }) {
 			await this.dispatch('fillData');
 			const data = await db.load();
-			// console.log(data);
 		},
 
 		async fillData({ state }) {
 			await db.fill(state.films);
+		},
+
+		changeFilmType({ commit }, type) {
+			commit('CHANGE_TYPE', type);
 		}
+
+
 	},
 	getters: {
 		getFilms(state) {
-			return { ...state.films.sort((a, b) => a.title > b.title ? 1 : -1) }
+			return {
+				...state.films
+				.sort((a, b) => a.title > b.title ? 1 : -1)
+				.filter(film => state.options.type === 'all' ? film : film.tags.includes(state.options.type))
+			}
 		},
 
 		getFilmsTags(state) {
-			console.log(state.films.flatMap(film => film.tags));
-			return state.films.flatMap(film => film.tags);
+			return state.films.flatMap(film => film.tags).filter(unique);
 		}
 	}
 });
