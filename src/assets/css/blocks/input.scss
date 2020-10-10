@@ -1,0 +1,15 @@
+.input {
+	margin: 0;
+	padding: 10px 14px;
+	color: $color-dark-gray;
+	font-family: inherit;
+	font-size: 16px;
+	background-color: $color-light-gray;
+	border: 2px solid transparent;
+	box-sizing: border-box;
+	transition: border-color .1s ease-in;
+	outline: none;
+	&:focus {
+		border-color: $color-accent;
+	}
+}

@@ -62,7 +62,7 @@ export default new Vuex.Store({
 		async fetchData({ commit }) {
 			await this.dispatch('fillData');
 			const data = await db.load();
-			console.log(data);
+			// console.log(data);
 		},
 
 		async fillData({ state }) {
@@ -72,6 +72,11 @@ export default new Vuex.Store({
 	getters: {
 		getFilms(state) {
 			return { ...state.films.sort((a, b) => a.title > b.title ? 1 : -1) }
+		},
+
+		getFilmsTags(state) {
+			console.log(state.films.flatMap(film => film.tags));
+			return state.films.flatMap(film => film.tags);
 		}
 	}
 });
