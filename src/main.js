@@ -19,6 +19,16 @@ const firebaseDevConfig = {
 	appId: process.env.VUE_APP_FIREBASE_APP_ID
 };
 
+const firebaseProdConfig = {
+	apiKey: 'AIzaSyChia8ECfUc8K6BPounYES4Icn9YYWwoH8',
+	authDomain: 'filmsovet.firebaseapp.com',
+	databaseURL: 'https://filmsovet.firebaseio.com',
+	projectId: 'filmsovet',
+	storageBucket: 'filmsovet.appspot.com',
+	messagingSenderId: '22290152608',
+	appId: '1:22290152608:web:13a4a9dbaa5f733fcb9dc5'
+}
+
 firebase.initializeApp(process.env.NODE_ENV === 'production' ? firebaseProdConfig : firebaseDevConfig);
 const database = firebase.database();
 export { database };
