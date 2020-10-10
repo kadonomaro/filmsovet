@@ -1,11 +1,14 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import { Database } from '../api/Database';
+import { LocalStorage } from '../api/LocalStorage';
 import { uniqueArray } from '../helpers';
 
 Vue.use(Vuex);
 
 const db = new Database;
+const expectedStorage = new LocalStorage('expected');
+const viewedStorage = new LocalStorage('viewed');
 
 export default new Vuex.Store({
   state: {
@@ -17,12 +20,16 @@ export default new Vuex.Store({
 		}
   },
   mutations: {
-		CHANGE_TYPE(state, type) {
-			state.options.type = type;
-		},
-
 		INIT_FILMS(state, films) {
 			state.films = films;
+		},
+
+		INIT_EXPECTED_FILMS(state, films) {
+			state.expectedFilms = films;
+		},
+
+		INIT_VIEWED_FILMS(state, films) {
+			state.viewedFilms = films;
 		},
 
 		ADD_NEW_FILM(state, film) {
@@ -31,16 +38,32 @@ export default new Vuex.Store({
 
 		ADD_EXPECTED_FILM(state, film) {
 			state.expectedFilms.push(film);
+			expectedStorage.save(state.expectedFilms);
 		},
 
 		ADD_VIEWED_FILM(state, film) {
 			state.viewedFilms.push(film);
-		}
+			viewedStorage.save(state.viewedFilms);
+		},
+
+		CHANGE_TYPE(state, type) {
+			state.options.type = type;
+		},
   },
   actions: {
 		async fetchData({ commit }) {
 			const data = await db.load();
 			commit('INIT_FILMS', Object.values(data));
+		},
+
+		fetchExpectedFilms({ commit }) {
+			const data = expectedStorage.load();
+			commit('INIT_EXPECTED_FILMS', data);
+		},
+
+		fetchViewedFilms({ commit }) {
+			const data = viewedStorage.load();
+			commit('INIT_VIEWED_FILMS', data);
 		},
 
 		async addData({ commit }, data) {

@@ -23,6 +23,8 @@ export default {
 	},
 	created() {
 		this.$store.dispatch('fetchData');
+		this.$store.dispatch('fetchExpectedFilms');
+		this.$store.dispatch('fetchViewedFilms');
 	}
 }
 </script>
