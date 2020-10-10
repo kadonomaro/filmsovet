@@ -1,23 +1,38 @@
 <template>
 	<div class="film-item">
-		<span class="film-item__rating">{{ film.rating }}</span>
+		<span class="film-item__rating" v-if="film.rating">{{ film.rating }}</span>
 		<div class="film-item__image">
 			<a :href="film.link" target="_blank">
 				<img class="film-item__image-img" :src="film.image" :alt="film.title">
 			</a>
 		</div>
-		<div class="film-item__text">
+		<div class="film-item__content">
 			<h2 class="film-item__title">{{ film.title }}</h2>
-			<div class="film-item__desc">
+		</div>
+
+		<div class="film-item__text">
+			<div class="film-item__desc" v-if="film.description">
 				<p>{{ film.description }}</p>
 			</div>
 		</div>
-		<div class="film-item__tags">
+
+		<div class="film-item__tags" v-if="film.tags">
 			<div class="tags">
 				<ul class="tags__list">
 					<li class="tags__item" v-for="tag in film.tags" :key="tag">{{ tag }}</li>
 				</ul>
 			</div>
+		</div>
+
+		<div class="film-item__controls">
+			<button
+				class="button button---icon-bookmark film-item__button"
+				title="Хочу посмотреть"
+			></button>
+			<button
+				class="button button---icon-check film-item__button"
+				title="Уже посмотрел"
+			></button>
 		</div>
 	</div>
 </template>
@@ -43,6 +58,9 @@ export default {
 		flex-direction: column;
 		height: 100%;
 		background-color: $color-dark-gray;
+		&:hover &__text {
+			display: block;
+		}
 		&__image {
 			height: 250px;
 		}
@@ -52,15 +70,28 @@ export default {
 			object-fit: cover;
 		}
 		&__text {
-			flex-grow: 1;
+			position: absolute;
+			z-index: 9;
+			left: 0;
+			width: 100%;
+			bottom: 0;
+			display: none;
 			padding: 10px;
+			background-color: inherit;
+			box-sizing: border-box;
+			transform: translateY(100%);
 			p {
 				margin: 0 0 10px;
 			}
 		}
+		&__content {
+			flex-grow: 1;
+			padding: 10px;
+		}
 		&__title {
-			margin: 0 0 5px;
+			margin: 0;
 			font-size: 20px;
+			line-height: 1;
 			text-align: center;
 		}
 		&__rating {
@@ -76,6 +107,15 @@ export default {
 			text-align: center;
 			background-color: $color-accent;
 			pointer-events: none;
+		}
+		&__controls {
+			display: flex;
+			padding: 10px;
+		}
+		&__button {
+			&:not(:last-child) {
+				margin-right: 10px;
+			}
 		}
 	}
 

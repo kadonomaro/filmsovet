@@ -25,11 +25,13 @@ export default {
 <style lang="scss">
 	.film-list {
 		display: flex;
+		flex-wrap: wrap;
 		&__item {
 			flex-basis: 25%;
 			max-width: 25%;
 			min-width: 250px;
 			padding: 10px;
+			box-sizing: border-box;
 		}
 	}
 </style>
