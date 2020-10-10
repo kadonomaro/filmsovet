@@ -1,0 +1,14 @@
+{
+    "name": "ФильмСовет",
+    "short_name": "ФильмСовет",
+    "icons": [
+        {
+            "src": "/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#101010",
+    "background_color": "#ffffff",
+    "display": "standalone"
+}
