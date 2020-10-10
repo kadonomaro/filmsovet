@@ -1,10 +1,10 @@
 <template>
 	<footer class="footer">
 		<div class="footer__inner">
-			<div>Фильмсовет&copy; {{ new Date().getFullYear() }}</div>
+			<div>ФильмСовет&copy; {{ new Date().getFullYear() }}</div>
 			<div class="footer__author">
 				<a class="author" href="https://airsoftware.ru.com/" target="_blank">
-					<img class="author__image" :src="require('@/assets/airsoftware.png')" alt="Airsoftware" title="Airsoftware">
+					<img class="author__image" :src="logo" alt="Airsoftware" title="Airsoftware">
 					<span class="author__text">Airsoftware</span>
 				</a>
 			</div>
@@ -13,8 +13,15 @@
 </template>
 
 <script>
+import logo from '@/assets/airsoftware.png';
+
 export default {
-	name: 'AppFooter'
+	name: 'AppFooter',
+	data() {
+		return {
+			logo
+		}
+	}
 }
 </script>
 
@@ -22,7 +29,7 @@ export default {
 	.footer {
 		padding: 15px 20px;
 		color: #ffffff;
-		background-color: $color-dark-gray;
+		background-color: $color-darkest;
 		&__inner {
 			display: flex;
 			justify-content: space-between;

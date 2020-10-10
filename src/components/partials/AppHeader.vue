@@ -1,5 +1,8 @@
 <template>
   <header class="header">
+		<div class="header__logo">
+			<AppLogo />
+		</div>
 		<div class="header__nav">
 			<AppNavigation />
 		</div>
@@ -8,10 +11,12 @@
 
 <script>
 import AppNavigation from './AppNavigation';
+import AppLogo from './AppLogo';
 
 export default {
 	name: 'AppHeader',
 	components: {
+		AppLogo,
 		AppNavigation
 	}
 }
@@ -19,10 +24,17 @@ export default {
 
 <style lang="scss">
 	.header {
+		position: relative;
+		display: flex;
 		padding: 20px 15px;
 		background-color: #101010;
+		&__logo {
+			position: absolute;
+			left: 15px;
+		}
 		&__nav {
 			display: flex;
+			flex-grow: 1;
 			justify-content: center;
 		}
 	}
