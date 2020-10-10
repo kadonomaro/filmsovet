@@ -5,6 +5,7 @@ import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
 import store from './store';
+import VueMeta from 'vue-meta'
 import '@/assets/css/style.scss';
 
 
@@ -22,6 +23,7 @@ firebase.initializeApp(process.env.NODE_ENV === 'production' ? firebaseProdConfi
 const database = firebase.database();
 export { database };
 
+Vue.use(VueMeta);
 
 Vue.config.productionTip = false;
 

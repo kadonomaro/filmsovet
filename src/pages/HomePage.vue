@@ -15,6 +15,16 @@ export default {
 	components: {
 		FilmComponent,
 		ToolbarComponent
+	},
+	metaInfo() {
+		return {
+			title: 'Советую посмотреть эти фильмы - ФильмСовет',
+			meta: [{
+				vmid: 'description',
+				name: 'description',
+				content: 'Полнометражные фильмы и сериалы. Комедии, боевики, триллеры или драмы. Подборка фильмов на любой вкус на сайте ФильмСовет.',
+			}]
+		}
 	}
 }
 </script>
