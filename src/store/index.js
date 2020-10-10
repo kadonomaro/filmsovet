@@ -71,12 +71,16 @@ export default new Vuex.Store({
 			commit('ADD_NEW_FILM', data);
 		},
 
-		addExpectedFilm({ commit }, film) {
-			commit('ADD_EXPECTED_FILM', film);
+		addExpectedFilm({ commit, state }, film) {
+			if (!state.expectedFilms.some(item => item.id === film.id)) {
+				commit('ADD_EXPECTED_FILM', film);
+			}
 		},
 
-		addViewedFilm({ commit }, film) {
-			commit('ADD_VIEWED_FILM', film);
+		addViewedFilm({ commit, state }, film) {
+			if (!state.viewedFilms.some(item => item.id === film.id)) {
+				commit('ADD_VIEWED_FILM', film);
+			}
 		},
 
 		changeFilmType({ commit }, type) {
@@ -101,7 +105,7 @@ export default new Vuex.Store({
 		},
 
 		getFilmsTags(state) {
-			return state.films.flatMap(film => film.tags).filter(uniqueArray);
+			return [...state.films.flatMap(film => film.tags).filter(uniqueArray).sort()];
 		},
 
 		getFilmsCurrentTag(state) {

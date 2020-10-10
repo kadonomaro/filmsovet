@@ -42,6 +42,7 @@ export default {
 	data() {
 		return {
 			film: {
+				id: '',
 				title: '',
 				description: '',
 				link: '',
@@ -68,6 +69,7 @@ export default {
 			if (value) {
 				this.film.tags = splitString(this.film.tags).filter(Boolean);
 				this.film.rating = this.film.rating.replace(',', '.');
+				this.film.id = (+new Date).toString(36);
 				this.$emit('on-submit', this.film);
 				this.clear();
 			}
