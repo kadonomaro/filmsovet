@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import { Database } from '../api/Database';
-import { unique } from '../helpers/array';
+import { uniqueArray } from '../helpers';
 
 Vue.use(Vuex);
 
@@ -91,7 +91,7 @@ export default new Vuex.Store({
 		},
 
 		getFilmsTags(state) {
-			return state.films.flatMap(film => film.tags).filter(unique);
+			return state.films.flatMap(film => film.tags).filter(uniqueArray);
 		}
 	}
 });

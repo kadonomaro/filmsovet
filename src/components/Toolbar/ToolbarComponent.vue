@@ -12,7 +12,7 @@
 			<button
 				class="button button---icon-plus button--auto-height toolbar__button"
 				title="Добавить фильм"
-				@click="clickHandler"
+				@click="openModalHandler"
 			></button>
 		</div>
 
@@ -21,10 +21,15 @@
 				<span>Добавить новый фильм</span>
       </template>
       <template v-slot:body>
-				Текст
+				<FilmNewForm :submitted="modal.submitted" @on-submit="submitHandler" />
       </template>
 			<template v-slot:footer>
-				<button class="button button---icon-check" style="margin-right: 5px" title="Добавить"></button>
+				<button
+					class="button button---icon-check"
+					style="margin-right: 5px"
+					title="Добавить"
+					@click="acceptHandler"
+				></button>
 				<button
 					class="button button--danger button---icon-cancel"
 					title="Отмена"
@@ -39,16 +44,19 @@
 <script>
 import { mapGetters } from 'vuex';
 import AppModal from '../partials/AppModal';
+import FilmNewForm from '../Film/FilmNewForm';
 
 export default {
 	name: 'ToolbarComponent',
 	components: {
-		AppModal
+		AppModal,
+		FilmNewForm
 	},
 	data() {
 		return {
 			modal: {
-				visible: false
+				visible: false,
+				submitted: false
 			}
 		}
 	},
@@ -56,11 +64,23 @@ export default {
 		changeHandler(event) {
 			this.$store.dispatch('changeFilmType', event.target.value);
 		},
-		clickHandler() {
+
+		openModalHandler() {
+			this.modal.submitted = false;
 			this.modal.visible = true;
 		},
+
+		acceptHandler() {
+			this.modal.submitted = true;
+			this.modal.visible = false;
+		},
+
 		closeModalHandler() {
 			this.modal.visible = false;
+		},
+
+		submitHandler(payload) {
+			console.log(payload);
 		}
 	},
 	computed: {
