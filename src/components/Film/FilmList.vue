@@ -1,6 +1,6 @@
 <template>
 	<div class="film-list">
-		<div class="film-list__item" v-for="film in getFilms" :key="film.id">
+		<div class="film-list__item" v-for="film in list" :key="film.id">
 			<FilmListItem :film="film"/>
 		</div>
 
@@ -8,7 +8,6 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
 import FilmListItem from './FilmListItem';
 
 export default {
@@ -16,8 +15,11 @@ export default {
 	components: {
 		FilmListItem
 	},
-	computed: {
-		...mapGetters(['getFilms'])
+	props: {
+		list: {
+			type: Object,
+			required: true
+		}
 	}
 }
 </script>

@@ -55,7 +55,7 @@ export default new Vuex.Store({
 			return state.films.flatMap(film => film.tags).filter(uniqueArray);
 		},
 
-		getCurrentFilmsTag(state) {
+		getFilmsCurrentTag(state) {
 			return state.options.type;
 		}
 	}

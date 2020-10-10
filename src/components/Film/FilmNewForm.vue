@@ -67,6 +67,7 @@ export default {
 		submitted(value) {
 			if (value) {
 				this.film.tags = splitString(this.film.tags).filter(Boolean);
+				this.film.rating = this.film.rating.replace(',', '.');
 				this.$emit('on-submit', this.film);
 				this.clear();
 			}
@@ -77,10 +78,6 @@ export default {
 
 <style lang="scss">
 	.film-new {
-
-		&__form {
-
-		}
 		&__label {
 			display: block;
 			margin-bottom: 5px;
