@@ -30,7 +30,7 @@ export default {
 		&__item {
 			flex-basis: 25%;
 			max-width: 25%;
-			min-width: 250px;
+			min-width: 300px;
 			padding: 10px;
 			box-sizing: border-box;
 		}

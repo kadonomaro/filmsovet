@@ -1,16 +1,15 @@
 <template>
 	<div class="film-item">
 		<span class="film-item__rating" v-if="film.rating">{{ film.rating }}</span>
+
 		<div class="film-item__image">
 			<a :href="film.link" target="_blank">
 				<img class="film-item__image-img" :src="film.image" :alt="film.title">
 			</a>
 		</div>
-		<div class="film-item__content">
-			<h2 class="film-item__title">{{ film.title }}</h2>
-		</div>
 
 		<div class="film-item__text">
+			<h2 class="film-item__title">{{ film.title }}</h2>
 			<div class="film-item__desc" v-if="film.description">
 				<p>{{ film.description }}</p>
 			</div>
@@ -58,44 +57,36 @@ export default {
 		flex-direction: column;
 		height: 100%;
 		background-color: $color-dark-gray;
-		&:hover &__text {
-			display: block;
+		&:hover &__image-img {
+			transform: scale(1.03);
 		}
 		&__image {
-			height: 250px;
+			height: 200px;
+			overflow: hidden;
 		}
 		&__image-img {
 			width: 100%;
 			height: 100%;
 			object-fit: cover;
+			transition: transform 0.2s ease-in;
 		}
 		&__text {
-			position: absolute;
-			z-index: 9;
-			left: 0;
-			width: 100%;
-			bottom: 0;
-			display: none;
+			flex-grow: 1;
 			padding: 10px;
 			background-color: inherit;
-			box-sizing: border-box;
-			transform: translateY(100%);
 			p {
 				margin: 0 0 10px;
 			}
 		}
-		&__content {
-			flex-grow: 1;
-			padding: 10px;
-		}
 		&__title {
-			margin: 0;
+			margin: 0 0 10px;
 			font-size: 20px;
 			line-height: 1;
 			text-align: center;
 		}
 		&__rating {
 			position: absolute;
+			z-index: 9;
 			top: 0;
 			right: 0;
 			width: $square;
@@ -111,6 +102,7 @@ export default {
 		&__controls {
 			display: flex;
 			padding: 10px;
+			background-color: $color-darkest;
 		}
 		&__button {
 			&:not(:last-child) {
