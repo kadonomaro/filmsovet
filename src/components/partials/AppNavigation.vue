@@ -10,13 +10,13 @@
 			<li class="navigation__item">
 				<router-link
 					class="navigation__link"
-					:to="{ name: 'WantPage' }"
+					:to="{ name: 'ExpectedPage' }"
 				>Хочу посмотреть</router-link>
 			</li>
 			<li class="navigation__item">
 				<router-link
 					class="navigation__link"
-					:to="{ name: 'AlreadyPage' }"
+					:to="{ name: 'ViewedPage' }"
 				>Уже посмотрел</router-link>
 			</li>
 		</ul>

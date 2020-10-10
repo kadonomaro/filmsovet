@@ -1,13 +1,22 @@
 <template>
   <div class="page">
     <h1 class="page__title">Хочу посмотреть</h1>
+		<FilmList :list="getExpectedFilms"/>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+import FilmList from '@/components/Film/FilmList';
 
 export default {
-	name: 'WantPage',
+	name: 'ExpectedPage',
+	components: {
+		FilmList
+	},
+	computed: {
+		...mapGetters(['getExpectedFilms'])
+	},
 	metaInfo() {
 		return {
 			title: 'Хочу посмотреть эти фильмы - ФильмСовет',

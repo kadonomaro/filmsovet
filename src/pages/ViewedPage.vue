@@ -1,13 +1,22 @@
 <template>
   <div class="page">
     <h1 class="page__title">Уже посмотрел</h1>
+		<FilmList :list="getViewedFilms"/>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+import FilmList from '@/components/Film/FilmList';
 
 export default {
-	name: 'AlreadyPage',
+	name: 'ViewedPage',
+	components: {
+		FilmList
+	},
+	computed: {
+		...mapGetters(['getViewedFilms'])
+	},
 	metaInfo() {
 		return {
 			title: 'Эти фильмы я уже посмотрел - ФильмСовет',

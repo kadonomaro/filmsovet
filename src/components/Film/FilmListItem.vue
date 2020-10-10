@@ -27,10 +27,12 @@
 			<button
 				class="button button---icon-bookmark film-item__button"
 				title="Хочу посмотреть"
+				@click="addExpectedFilm"
 			></button>
 			<button
 				class="button button---icon-check film-item__button"
 				title="Уже посмотрел"
+				@click="addViewedFilm"
 			></button>
 		</div>
 	</div>
@@ -43,6 +45,15 @@ export default {
 		film: {
 			type: Object,
 			required: true
+		}
+	},
+	methods: {
+		addExpectedFilm() {
+			this.$store.dispatch('addExpectedFilm', this.film);
+		},
+
+		addViewedFilm() {
+			this.$store.dispatch('addViewedFilm', this.film);
 		}
 	}
 }

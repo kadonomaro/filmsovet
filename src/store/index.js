@@ -10,6 +10,8 @@ const db = new Database;
 export default new Vuex.Store({
   state: {
 		films: [],
+		expectedFilms: [],
+		viewedFilms: [],
 		options: {
 			type: 'all'
 		}
@@ -25,6 +27,14 @@ export default new Vuex.Store({
 
 		ADD_NEW_FILM(state, film) {
 			state.films.push(film);
+		},
+
+		ADD_EXPECTED_FILM(state, film) {
+			state.expectedFilms.push(film);
+		},
+
+		ADD_VIEWED_FILM(state, film) {
+			state.viewedFilms.push(film);
 		}
   },
   actions: {
@@ -38,17 +48,33 @@ export default new Vuex.Store({
 			commit('ADD_NEW_FILM', data);
 		},
 
+		addExpectedFilm({ commit }, film) {
+			commit('ADD_EXPECTED_FILM', film);
+		},
+
+		addViewedFilm({ commit }, film) {
+			commit('ADD_VIEWED_FILM', film);
+		},
+
 		changeFilmType({ commit }, type) {
 			commit('CHANGE_TYPE', type);
 		}
 	},
 	getters: {
 		getFilms(state) {
-			return {
+			return [
 				...state.films
 				.sort((a, b) => a.title > b.title ? 1 : -1)
 				.filter(film => state.options.type === 'all' ? film : film.tags.includes(state.options.type))
-			}
+			]
+		},
+
+		getExpectedFilms(state) {
+			return state.expectedFilms;
+		},
+
+		getViewedFilms(state) {
+			return state.viewedFilms;
 		},
 
 		getFilmsTags(state) {

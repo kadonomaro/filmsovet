@@ -11,14 +11,14 @@ const routes = [
     component: HomePage
   },
   {
-    path: '/want',
-    name: 'WantPage',
-    component: () => import(/* webpackChunkName: "about" */ '../pages/WantPage.vue')
+    path: '/expected',
+    name: 'ExpectedPage',
+    component: () => import(/* webpackChunkName: "about" */ '../pages/ExpectedPage.vue')
   },
   {
-    path: '/already',
-    name: 'AlreadyPage',
-    component: () => import(/* webpackChunkName: "about" */ '../pages/AlreadyPage.vue')
+    path: '/viewed',
+    name: 'ViewedPage',
+    component: () => import(/* webpackChunkName: "about" */ '../pages/ViewedPage.vue')
   }
 ]
 
