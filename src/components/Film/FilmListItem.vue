@@ -59,11 +59,11 @@ export default {
 	},
 	methods: {
 		addExpectedFilm() {
-			this.$store.dispatch('addExpectedFilm', { id: this.film.id });
+			this.$store.dispatch('addExpectedFilm', this.film.id);
 		},
 
 		addViewedFilm() {
-			this.$store.dispatch('addViewedFilm', { id: this.film.id });
+			this.$store.dispatch('addViewedFilm', this.film.id);
 		}
 	},
 	computed: {

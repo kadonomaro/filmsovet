@@ -13,8 +13,8 @@ const viewedStorage = new LocalStorage('viewed');
 export default new Vuex.Store({
   state: {
 		films: [],
-		expectedFilms: [],
-		viewedFilms: [],
+		// expectedFilms: [],
+		// viewedFilms: [],
 		options: {
 			type: 'all'
 		}
@@ -24,26 +24,16 @@ export default new Vuex.Store({
 			state.films = films;
 		},
 
-		INIT_EXPECTED_FILMS(state, films) {
-			state.expectedFilms = films;
-		},
-
-		INIT_VIEWED_FILMS(state, films) {
-			state.viewedFilms = films;
-		},
-
 		ADD_NEW_FILM(state, film) {
 			state.films.push(film);
 		},
 
-		ADD_EXPECTED_FILM(state, film) {
-			state.expectedFilms.push(film);
-			expectedStorage.save(state.expectedFilms);
+		ADD_EXPECTED_FILM(state, id) {
+			state.films.find(film => film.id === id).expected = true;
 		},
 
-		ADD_VIEWED_FILM(state, film) {
-			state.viewedFilms.push(film);
-			viewedStorage.save(state.viewedFilms);
+		ADD_VIEWED_FILM(state, id) {
+			state.films.find(film => film.id === id).viewed = true;
 		},
 
 		CHANGE_TYPE(state, type) {
@@ -56,31 +46,17 @@ export default new Vuex.Store({
 			commit('INIT_FILMS', Object.values(data));
 		},
 
-		fetchExpectedFilms({ commit }) {
-			const data = expectedStorage.load();
-			commit('INIT_EXPECTED_FILMS', data);
-		},
-
-		fetchViewedFilms({ commit }) {
-			const data = viewedStorage.load();
-			commit('INIT_VIEWED_FILMS', data);
-		},
-
 		async addData({ commit }, data) {
 			await db.add(data);
 			commit('ADD_NEW_FILM', data);
 		},
 
-		addExpectedFilm({ commit, state }, film) {
-			if (!state.expectedFilms.some(item => item.id === film.id)) {
-				commit('ADD_EXPECTED_FILM', film);
-			}
+		addExpectedFilm({ commit }, id) {
+			commit('ADD_EXPECTED_FILM', id);
 		},
 
-		addViewedFilm({ commit, state }, film) {
-			if (!state.viewedFilms.some(item => item.id === film.id)) {
-				commit('ADD_VIEWED_FILM', film);
-			}
+		addViewedFilm({ commit }, id) {
+			commit('ADD_VIEWED_FILM', id);
 		},
 
 		changeFilmType({ commit }, type) {
@@ -97,15 +73,11 @@ export default new Vuex.Store({
 		},
 
 		getExpectedFilms(state) {
-			return state.films.filter(film => {
-				return state.expectedFilms.some(expectedFilm => expectedFilm.id === film.id);
-			});
+			return state.films.filter(film => film.expected === true);
 		},
 
 		getViewedFilms(state) {
-			return state.films.filter(film => {
-				return state.viewedFilms.some(viewedFilm => viewedFilm.id === film.id);
-			});
+			return state.films.filter(film => film.viewed === true);
 		},
 
 		getFilmsTags(state) {

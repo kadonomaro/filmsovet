@@ -48,19 +48,24 @@ export default {
 				link: '',
 				image: '',
 				rating: '',
-				tags: ''
+				tags: '',
+				expected: false,
+				viewed: false
 			}
 		}
 	},
 	methods: {
 		clear() {
 			this.film = {
+				id: '',
 				title: '',
 				description: '',
 				link: '',
 				image: '',
 				rating: '',
-				tags: ''
+				tags: '',
+				expected: false,
+				viewed: false
 			}
 		}
 	},
