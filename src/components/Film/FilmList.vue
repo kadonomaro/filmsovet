@@ -37,4 +37,32 @@ export default {
 			box-sizing: border-box;
 		}
 	}
+
+
+	@media (max-width: $desktop-small) {
+		.film-list {
+			&__item {
+				flex-basis: 33.3333%;
+				max-width: 33.3333%;
+			}
+		}
+	}
+
+	@media (max-width: $tablet-small) {
+		.film-list {
+			&__item {
+				flex-basis: 50%;
+				max-width: 50%;
+			}
+		}
+	}
+
+	@media (max-width: $mobile-large) {
+		.film-list {
+			display: block;
+			&__item {
+				max-width: 100%;
+			}
+		}
+	}
 </style>

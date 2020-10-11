@@ -38,4 +38,17 @@ export default {
 			justify-content: center;
 		}
 	}
+
+
+	@media (max-width: $tablet-small) {
+		.header {
+			padding: 10px;
+			&__logo {
+				left: 10px;
+			}
+			&__nav {
+				justify-content: flex-end;
+			}
+		}
+	}
 </style>

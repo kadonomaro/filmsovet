@@ -54,4 +54,18 @@ export default {
 			border-color: $color-accent;
 		}
 	}
+
+
+	@media (max-width: $tablet-small) {
+		.navigation {
+			&__list {
+				display: block;
+				text-align: right;
+			}
+			&__link {
+				display: inline-block;
+				font-size: 16px;
+			}
+		}
+	}
 </style>
