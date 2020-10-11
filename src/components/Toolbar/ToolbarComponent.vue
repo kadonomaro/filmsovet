@@ -11,7 +11,7 @@
 				>{{ tag }}</option>
 			</select>
 			<button
-				class="button button---icon-plus button--auto-height toolbar__button"
+				class="button button--icon-plus button--auto-height toolbar__button"
 				title="Добавить фильм"
 				@click="openModalHandler"
 			></button>
@@ -26,13 +26,13 @@
       </template>
 			<template v-slot:footer>
 				<button
-					class="button button---icon-check"
+					class="button button--icon-check"
 					style="margin-right: 5px"
 					title="Добавить"
 					@click="acceptHandler"
 				></button>
 				<button
-					class="button button--danger button---icon-cancel"
+					class="button button--danger button--icon-cancel"
 					title="Отмена"
 					@click="closeModalHandler"
 				></button>
