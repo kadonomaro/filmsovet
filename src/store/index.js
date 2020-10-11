@@ -97,11 +97,15 @@ export default new Vuex.Store({
 		},
 
 		getExpectedFilms(state) {
-			return state.expectedFilms;
+			return state.films.filter(film => {
+				return state.expectedFilms.some(expectedFilm => expectedFilm.id === film.id);
+			});
 		},
 
 		getViewedFilms(state) {
-			return state.viewedFilms;
+			return state.films.filter(film => {
+				return state.viewedFilms.some(viewedFilm => viewedFilm.id === film.id);
+			});
 		},
 
 		getFilmsTags(state) {
