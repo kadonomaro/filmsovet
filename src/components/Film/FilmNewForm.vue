@@ -7,7 +7,7 @@
 			</label>
 			<label class="film-new__label">
 				<span class="film-new__title">Описание</span>
-				<textarea class="input film-new__input" rows="5" v-model="film.description"></textarea>
+				<textarea class="input film-new__input film-new__textarea" rows="5" v-model="film.description"></textarea>
 			</label>
 			<label class="film-new__label">
 				<span class="film-new__title">Ссылка</span>
@@ -87,6 +87,9 @@ export default {
 		}
 		&__input {
 			width: 100%;
+		}
+		&__textarea {
+			min-height: 100px;
 		}
 	}
 </style>

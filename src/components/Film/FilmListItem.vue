@@ -3,9 +3,19 @@
 		<span class="film-item__rating" v-if="film.rating">{{ film.rating }}</span>
 
 		<div class="film-item__image">
-			<a :href="film.link" target="_blank">
-				<img class="film-item__image-img" :src="film.image" :alt="film.title">
+			<a :href="film.link" target="_blank" v-if="film.link">
+				<img
+					class="film-item__image-img"
+					:src="image"
+					:alt="film.title"
+				>
 			</a>
+			<img
+				class="film-item__image-img"
+				:src="image"
+				:alt="film.title"
+				v-else
+			>
 		</div>
 
 		<div class="film-item__text">
@@ -54,6 +64,11 @@ export default {
 
 		addViewedFilm() {
 			this.$store.dispatch('addViewedFilm', { id: this.film.id });
+		}
+	},
+	computed: {
+		image() {
+			return this.film.image || 'https://via.placeholder.com/400x200?text=No+image'
 		}
 	}
 }
