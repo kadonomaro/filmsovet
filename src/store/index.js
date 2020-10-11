@@ -74,11 +74,15 @@ export default new Vuex.Store({
 		},
 
 		getExpectedFilms(state) {
-			return state.films.filter(film => film.expected === true);
+			return state.films
+				.filter(film => film.expected === true)
+				.filter(film => state.options.type === 'all' ? film : film.tags.includes(state.options.type));
 		},
 
 		getViewedFilms(state) {
-			return state.films.filter(film => film.viewed === true);
+			return state.films
+				.filter(film => film.viewed === true)
+				.filter(film => state.options.type === 'all' ? film : film.tags.includes(state.options.type));
 		},
 
 		getFilmsTags(state) {

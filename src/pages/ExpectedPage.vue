@@ -1,6 +1,7 @@
 <template>
   <div class="page">
     <h1 class="page__title">Хочу посмотреть</h1>
+		<ToolbarComponent />
 		<FilmList :list="getExpectedFilms"/>
   </div>
 </template>
@@ -8,11 +9,13 @@
 <script>
 import { mapGetters } from 'vuex';
 import FilmList from '@/components/Film/FilmList';
+import ToolbarComponent from '@/components/Toolbar/ToolbarComponent';
 
 export default {
 	name: 'ExpectedPage',
 	components: {
-		FilmList
+		FilmList,
+		ToolbarComponent
 	},
 	computed: {
 		...mapGetters(['getExpectedFilms'])

@@ -1,6 +1,7 @@
 <template>
   <div class="page">
     <h1 class="page__title">Уже посмотрел</h1>
+		<ToolbarComponent />
 		<FilmList :list="getViewedFilms"/>
   </div>
 </template>
@@ -8,11 +9,13 @@
 <script>
 import { mapGetters } from 'vuex';
 import FilmList from '@/components/Film/FilmList';
+import ToolbarComponent from '@/components/Toolbar/ToolbarComponent';
 
 export default {
 	name: 'ViewedPage',
 	components: {
-		FilmList
+		FilmList,
+		ToolbarComponent
 	},
 	computed: {
 		...mapGetters(['getViewedFilms'])
