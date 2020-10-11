@@ -13,8 +13,6 @@ const viewedStorage = new LocalStorage('viewed');
 export default new Vuex.Store({
   state: {
 		films: [],
-		// expectedFilms: [],
-		// viewedFilms: [],
 		options: {
 			type: 'all'
 		}
@@ -28,17 +26,19 @@ export default new Vuex.Store({
 			state.films.push(film);
 		},
 
-		ADD_EXPECTED_FILM(state, id) {
-			state.films.find(film => film.id === id).expected = true;
+		CHANGE_EXPECTED_FILM(state, id) {
+			const film = state.films.find(film => film.id === id);
+			film.expected = !film.expected;
 		},
 
-		ADD_VIEWED_FILM(state, id) {
-			state.films.find(film => film.id === id).viewed = true;
+		CHANGE_VIEWED_FILM(state, id) {
+			const film = state.films.find(film => film.id === id);
+			film.viewed = !film.viewed;
 		},
 
 		CHANGE_TYPE(state, type) {
 			state.options.type = type;
-		},
+		}
   },
   actions: {
 		async fetchData({ commit }) {
@@ -51,12 +51,12 @@ export default new Vuex.Store({
 			commit('ADD_NEW_FILM', data);
 		},
 
-		addExpectedFilm({ commit }, id) {
-			commit('ADD_EXPECTED_FILM', id);
+		changeExpectedFilm({ commit }, id) {
+			commit('CHANGE_EXPECTED_FILM', id);
 		},
 
-		addViewedFilm({ commit }, id) {
-			commit('ADD_VIEWED_FILM', id);
+		changeViewedFilm({ commit }, id) {
+			commit('CHANGE_VIEWED_FILM', id);
 		},
 
 		changeFilmType({ commit }, type) {
@@ -69,6 +69,7 @@ export default new Vuex.Store({
 				...state.films
 				.sort((a, b) => a.title > b.title ? 1 : -1)
 				.filter(film => state.options.type === 'all' ? film : film.tags.includes(state.options.type))
+				.filter(film => !film.expected && !film.viewed)
 			]
 		},
 

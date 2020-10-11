@@ -37,12 +37,12 @@
 			<button
 				class="button button---icon-bookmark film-item__button"
 				title="Хочу посмотреть"
-				@click="addExpectedFilm"
+				@click="changeExpectedFilm"
 			></button>
 			<button
 				class="button button---icon-check film-item__button"
 				title="Уже посмотрел"
-				@click="addViewedFilm"
+				@click="changeViewedFilm"
 			></button>
 		</div>
 	</div>
@@ -58,12 +58,12 @@ export default {
 		}
 	},
 	methods: {
-		addExpectedFilm() {
-			this.$store.dispatch('addExpectedFilm', this.film.id);
+		changeExpectedFilm() {
+			this.$store.dispatch('changeExpectedFilm', this.film.id);
 		},
 
-		addViewedFilm() {
-			this.$store.dispatch('addViewedFilm', this.film.id);
+		changeViewedFilm() {
+			this.$store.dispatch('changeViewedFilm', this.film.id);
 		}
 	},
 	computed: {
