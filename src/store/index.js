@@ -13,13 +13,17 @@ const viewedStorage = new LocalStorage('viewed');
 export default new Vuex.Store({
   state: {
 		films: [],
+		expectedFilms: [],
+		viewedFilms: [],
 		options: {
 			type: 'all'
 		}
   },
   mutations: {
-		INIT_FILMS(state, films) {
+		INIT_FILMS(state, { films, expectedData, viewedData }) {
 			state.films = films;
+			state.expectedFilms = expectedData;
+			state.viewedFilms = viewedData;
 		},
 
 		ADD_NEW_FILM(state, film) {
@@ -28,12 +32,34 @@ export default new Vuex.Store({
 
 		CHANGE_EXPECTED_FILM(state, id) {
 			const film = state.films.find(film => film.id === id);
-			film.expected = !film.expected;
+			if (film) {
+				film.expected = !film.expected;
+
+				const expectedFilm = state.expectedFilms.find(film => film.id === id);
+				if (expectedFilm) {
+					expectedFilm.expected = !expectedFilm.expected;
+				} else {
+					state.expectedFilms.push({ id: film.id, expected: film.expected });
+				}
+
+				expectedStorage.save(state.expectedFilms);
+			}
 		},
 
 		CHANGE_VIEWED_FILM(state, id) {
 			const film = state.films.find(film => film.id === id);
-			film.viewed = !film.viewed;
+			if (film) {
+				film.viewed = !film.viewed;
+
+				const viewedFilm = state.viewedFilms.find(film => film.id === id);
+				if (viewedFilm) {
+					viewedFilm.viewed = !viewedFilm.viewed;
+				} else {
+					state.viewedFilms.push({ id: film.id, viewed: film.viewed });
+				}
+
+				viewedStorage.save(state.viewedFilms);
+			}
 		},
 
 		CHANGE_TYPE(state, type) {
@@ -43,7 +69,15 @@ export default new Vuex.Store({
   actions: {
 		async fetchData({ commit }) {
 			const data = await db.load();
-			commit('INIT_FILMS', Object.values(data));
+			const expectedData = expectedStorage.load();
+			const viewedData = viewedStorage.load();
+
+			const films = Object.values(data).map(film => {
+				const expected = expectedData.find(expected => film.id === expected.id);
+				const viewed = viewedData.find(viewed => film.id === viewed.id);
+				return { ...film, ...expected, ...viewed };
+			});
+			commit('INIT_FILMS', { films,  expectedData, viewedData });
 		},
 
 		async addData({ commit }, data) {
