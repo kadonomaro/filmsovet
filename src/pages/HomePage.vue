@@ -2,19 +2,22 @@
   <div class="page">
     <h1 class="page__title">Советую посмотреть</h1>
 		<ToolbarComponent />
-		<FilmList :list="getFilms"/>
+		<FilmList :list="getFilms" v-if="getFilms.length"/>
+		<FilmEmpty v-else/>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
 import FilmList from '@/components/Film/FilmList';
+import FilmEmpty from '@/components/Film/FilmEmpty';
 import ToolbarComponent from '@/components/Toolbar/ToolbarComponent';
 
 export default {
 	name: 'HomePage',
 	components: {
 		FilmList,
+		FilmEmpty,
 		ToolbarComponent
 	},
 	computed: {

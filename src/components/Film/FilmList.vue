@@ -3,7 +3,6 @@
 		<div class="film-list__item" v-for="film in list" :key="film.id">
 			<FilmListItem :film="film"/>
 		</div>
-
 	</div>
 </template>
 

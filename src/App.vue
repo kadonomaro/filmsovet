@@ -1,13 +1,11 @@
 <template>
   <div id="app">
 		<AppHeader />
-    <transition name="fade" mode="out-in">
 			<div class="content">
 				<div class="container">
 					<router-view/>
 				</div>
 			</div>
-    </transition>
 		<AppFooter />
   </div>
 </template>
