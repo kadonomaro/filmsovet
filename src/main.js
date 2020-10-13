@@ -6,6 +6,7 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 import VueMeta from 'vue-meta'
+import Vuelidate from 'vuelidate';
 import '@/assets/css/style.scss';
 
 
@@ -34,6 +35,7 @@ const database = firebase.database();
 export { database };
 
 Vue.use(VueMeta);
+Vue.use(Vuelidate);
 
 Vue.config.productionTip = false;
 

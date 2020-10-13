@@ -26,10 +26,12 @@
 				<input class="input film-new__input" type="text" v-model="film.tags">
 			</label>
 		</form>
+		{{ $v }}
 	</div>
 </template>
 
 <script>
+import { required } from 'vuelidate/lib/validators';
 import { splitString } from '@/helpers';
 
 export default {
@@ -51,6 +53,13 @@ export default {
 				tags: '',
 				expected: false,
 				viewed: false
+			}
+		}
+	},
+	validations: {
+		film: {
+			title: {
+				required
 			}
 		}
 	},

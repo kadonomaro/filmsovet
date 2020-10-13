@@ -1,6 +1,6 @@
 <template>
   <div class="film-empty">
-    <div class="film-empty__text">Здесь пока ничего нет</div>
+    <div class="film-empty__text">Список пуст</div>
   </div>
 </template>
 
