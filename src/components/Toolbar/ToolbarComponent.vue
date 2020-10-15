@@ -22,9 +22,9 @@
 				<span>Добавить новый фильм</span>
       </template>
       <template v-slot:body>
-				<FilmNewForm :submitted="modal.submitted" @on-submit="submitHandler" />
+				<FilmNewForm :submitted="modal.submitted" @on-submit="submitHandler" @on-cancel="closeModalHandler" />
       </template>
-			<template v-slot:footer>
+			<!-- <template v-slot:footer>
 				<button
 					class="button button--icon-check"
 					style="margin-right: 5px"
@@ -36,7 +36,7 @@
 					title="Отмена"
 					@click="closeModalHandler"
 				></button>
-      </template>
+      </template> -->
     </AppModal>
 
 	</div>
@@ -56,8 +56,7 @@ export default {
 	data() {
 		return {
 			modal: {
-				visible: false,
-				submitted: false
+				visible: false
 			}
 		}
 	},
@@ -67,21 +66,18 @@ export default {
 		},
 
 		openModalHandler() {
-			this.modal.submitted = false;
 			this.modal.visible = true;
 		},
 
-		acceptHandler() {
-			this.modal.submitted = true;
-			this.modal.visible = false;
-		},
 
 		closeModalHandler() {
 			this.modal.visible = false;
 		},
 
 		submitHandler(payload) {
-			this.$store.dispatch('addData', payload);
+			// this.$store.dispatch('addData', payload);
+			console.log(payload);
+			this.modal.visible = false;
 		}
 	},
 	computed: {

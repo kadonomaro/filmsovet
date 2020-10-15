@@ -2,7 +2,7 @@
 	  <transition name="modal-fade">
     <div class="modal-overlay" @click.self="closeHandler">
       <div class="modal">
-        <header class="modal__header">
+        <header class="modal__header" v-if="$slots.header">
           <slot name="header"></slot>
 					<button class="modal__button-close" aria-label="close modal" @click="closeHandler">
 						<svg class="modal__close-icon" fill="#a0a0a0" width="100%" height="100%" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -10,10 +10,10 @@
 						</svg>
     			</button>
         </header>
-        <div class="modal__body">
+        <div class="modal__body" v-if="$slots.body">
           <slot name="body"></slot>
         </div>
-        <footer class="modal__footer">
+        <footer class="modal__footer" v-if="$slots.footer">
           <slot name="footer"></slot>
         </footer>
       </div>

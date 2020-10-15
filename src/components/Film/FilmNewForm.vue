@@ -67,6 +67,19 @@
 				>
 				<span class="film-new__warning" v-if="$v.film.tags.$error">Поле желательно для заполнения</span>
 			</label>
+			<div class="film-new__controls">
+				<button
+					class="button button--icon-check"
+					style="margin-right: 5px"
+					title="Добавить"
+					@click.prevent="submitHandler"
+				></button>
+				<button
+					class="button button--danger button--icon-cancel"
+					title="Отмена"
+					@click.prevent="cancelHandler"
+				></button>
+			</div>
 		</form>
 	</div>
 </template>
@@ -77,11 +90,6 @@ import { splitString } from '@/helpers';
 
 export default {
 	name: 'FilmNewForm',
-	props: {
-		submitted: {
-			type: Boolean
-		}
-	},
 	data() {
 		return {
 			film: {
@@ -99,27 +107,27 @@ export default {
 	},
 	validations: {
 		film: {
-			title: {
-				required
-			},
-			description: {
-				required
-			},
-			link: {
-				required
-			},
-			image: {
-				required
-			},
-			rating: {
-				required
-			},
-			tags: {
-				required
-			}
+			title: { required },
+			description: { required },
+			link: { required },
+			image: { required },
+			rating: { required },
+			tags: { required }
 		}
 	},
 	methods: {
+		submitHandler() {
+				this.film.tags = splitString(this.film.tags).filter(Boolean);
+				this.film.rating = this.film.rating.replace(',', '.');
+				this.film.id = (+new Date).toString(36);
+				this.$emit('on-submit', this.film);
+				this.clear();
+		},
+
+		cancelHandler() {
+			this.$emit('on-cancel');
+		},
+
 		clear() {
 			this.film = {
 				id: '',
@@ -131,17 +139,6 @@ export default {
 				tags: '',
 				expected: false,
 				viewed: false
-			}
-		}
-	},
-	watch: {
-		submitted(value) {
-			if (value && !this.$v.$error) {
-				this.film.tags = splitString(this.film.tags).filter(Boolean);
-				this.film.rating = this.film.rating.replace(',', '.');
-				this.film.id = (+new Date).toString(36);
-				this.$emit('on-submit', this.film);
-				this.clear();
 			}
 		}
 	}
@@ -161,6 +158,10 @@ export default {
 		}
 		&__textarea {
 			min-height: 100px;
+		}
+		&__controls {
+			display: flex;
+			justify-content: flex-end;
 		}
 		&__error,
 		&__warning {
