@@ -1,4 +1,5 @@
 .input {
+	display: block;
 	padding: 6px 10px;
 	color: $color-dark-gray;
 	font-family: inherit;
@@ -12,5 +13,17 @@
 	resize: vertical;
 	&:focus {
 		border-color: $color-accent;
+	}
+}
+.input--warning {
+	border-color: $color-warning;
+	&:focus {
+		border-color: $color-warning;
+	}
+}
+.input--error {
+	border-color: $color-danger;
+	&:focus {
+		border-color: $color-danger;
 	}
 }

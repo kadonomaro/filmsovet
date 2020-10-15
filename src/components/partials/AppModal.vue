@@ -45,7 +45,8 @@ export default {
     justify-content: center;
 		align-items: center;
 		padding: 10px;
-    background-color: rgba($color: #000000, $alpha: 0.7);
+		background-color: rgba($color: #000000, $alpha: 0.7);
+		overflow: auto;
   }
   .modal {
 		position: relative;
@@ -100,5 +101,12 @@ export default {
   .modal-fade-enter-active,
   .modal-fade-leave-active {
     transition: opacity 0.3s ease
-  }
+	}
+
+
+	@media (max-width: $mobile-large) {
+		.modal-overlay {
+			align-items: flex-start;
+		}
+	}
 </style>

@@ -3,30 +3,71 @@
 		<form class="film-new__form">
 			<label class="film-new__label">
 				<span class="film-new__title">Название</span>
-				<input class="input film-new__input" type="text" v-model="film.title">
+				<input
+					class="input film-new__input"
+					:class="{ 'input--error': $v.film.title.$error }"
+					type="text"
+					v-model="film.title"
+					@blur="$v.film.title.$touch()"
+				>
+				<span class="film-new__error" v-if="$v.film.title.$error">Поле обязательно для заполнения</span>
 			</label>
 			<label class="film-new__label">
 				<span class="film-new__title">Описание</span>
-				<textarea class="input film-new__input film-new__textarea" rows="5" v-model="film.description"></textarea>
+				<textarea
+					class="input film-new__input film-new__textarea"
+					:class="{ 'input--warning': $v.film.description.$error }"
+					rows="5"
+					v-model="film.description"
+					@blur="$v.film.description.$touch()"
+				></textarea>
+				<span class="film-new__warning" v-if="$v.film.description.$error">Поле желательно для заполнения</span>
 			</label>
 			<label class="film-new__label">
 				<span class="film-new__title">Ссылка</span>
-				<input class="input film-new__input" type="text" v-model="film.link">
+				<input
+					class="input film-new__input"
+					:class="{ 'input--warning': $v.film.link.$error }"
+					type="text"
+					v-model="film.link"
+					@blur="$v.film.link.$touch()"
+				>
+				<span class="film-new__warning" v-if="$v.film.link.$error">Поле желательно для заполнения</span>
 			</label>
 			<label class="film-new__label">
 				<span class="film-new__title">Ссылка на изображение</span>
-				<input class="input film-new__input" type="text" v-model="film.image">
+				<input
+					class="input film-new__input"
+					:class="{ 'input--warning': $v.film.image.$error }"
+					type="text"
+					v-model="film.image"
+					@blur="$v.film.image.$touch()"
+				>
+				<span class="film-new__warning" v-if="$v.film.image.$error">Поле желательно для заполнения</span>
 			</label>
 			<label class="film-new__label">
 				<span class="film-new__title">Рейтинг</span>
-				<input class="input film-new__input" type="text" v-model="film.rating">
+				<input
+					class="input film-new__input"
+					:class="{ 'input--warning': $v.film.rating.$error }"
+					type="text"
+					v-model="film.rating"
+					@blur="$v.film.rating.$touch()"
+				>
+				<span class="film-new__warning" v-if="$v.film.rating.$error">Поле желательно для заполнения</span>
 			</label>
 			<label class="film-new__label">
 				<span class="film-new__title">Жанр</span>
-				<input class="input film-new__input" type="text" v-model="film.tags">
+				<input
+					class="input film-new__input"
+					:class="{ 'input--warning': $v.film.tags.$error }"
+					type="text"
+					v-model="film.tags"
+					@blur="$v.film.tags.$touch()"
+				>
+				<span class="film-new__warning" v-if="$v.film.tags.$error">Поле желательно для заполнения</span>
 			</label>
 		</form>
-		{{ $v }}
 	</div>
 </template>
 
@@ -60,6 +101,21 @@ export default {
 		film: {
 			title: {
 				required
+			},
+			description: {
+				required
+			},
+			link: {
+				required
+			},
+			image: {
+				required
+			},
+			rating: {
+				required
+			},
+			tags: {
+				required
 			}
 		}
 	},
@@ -80,7 +136,7 @@ export default {
 	},
 	watch: {
 		submitted(value) {
-			if (value) {
+			if (value && !this.$v.$error) {
 				this.film.tags = splitString(this.film.tags).filter(Boolean);
 				this.film.rating = this.film.rating.replace(',', '.');
 				this.film.id = (+new Date).toString(36);
@@ -95,8 +151,9 @@ export default {
 <style lang="scss">
 	.film-new {
 		&__label {
+			position: relative;
 			display: block;
-			margin-bottom: 5px;
+			margin-bottom: 15px;
 			font-size: 14px;
 		}
 		&__input {
@@ -104,6 +161,27 @@ export default {
 		}
 		&__textarea {
 			min-height: 100px;
+		}
+		&__error,
+		&__warning {
+			position: absolute;
+			z-index: 9;
+			left: 0;
+			bottom: 3px;
+			width: 100%;
+			padding: 3px 6px;
+			color: #ffffff;
+			line-height: 14px;
+			border-bottom-left-radius: 5px;
+			border-bottom-right-radius: 5px;
+			transform: translateY(100%);
+			box-sizing: border-box;
+		}
+		&__error {
+			background-color: $color-danger;
+		}
+		&__warning {
+			background-color: $color-warning;
 		}
 	}
 </style>
