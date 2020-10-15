@@ -72,6 +72,7 @@
 					class="button button--icon-check"
 					style="margin-right: 5px"
 					title="Добавить"
+					:disabled="$v.film.title.$invalid"
 					@click.prevent="submitHandler"
 				></button>
 				<button
@@ -121,14 +122,16 @@ export default {
 				this.film.rating = this.film.rating.replace(',', '.');
 				this.film.id = (+new Date).toString(36);
 				this.$emit('on-submit', this.film);
-				this.clear();
+				this.reset();
 		},
 
 		cancelHandler() {
 			this.$emit('on-cancel');
+			this.reset();
 		},
 
-		clear() {
+		reset() {
+			this.$v.$reset();
 			this.film = {
 				id: '',
 				title: '',

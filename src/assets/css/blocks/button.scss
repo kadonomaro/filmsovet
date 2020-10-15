@@ -13,6 +13,14 @@
 	&:hover {
 		background-color: darken($color: $color-accent, $amount: 5%);
 	}
+	&:hover:disabled {
+		background-color: $color-medium-gray;
+	}
+	&:disabled {
+		opacity: 0.5;
+		cursor: initial;
+		background-color: $color-medium-gray;
+	}
 }
 .button--danger {
 	background-color: $color-danger;

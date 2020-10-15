@@ -69,14 +69,12 @@ export default {
 			this.modal.visible = true;
 		},
 
-
 		closeModalHandler() {
 			this.modal.visible = false;
 		},
 
 		submitHandler(payload) {
-			// this.$store.dispatch('addData', payload);
-			console.log(payload);
+			this.$store.dispatch('addData', payload);
 			this.modal.visible = false;
 		}
 	},

@@ -51,7 +51,7 @@ export default {
   .modal {
 		position: relative;
 		z-index: 999;
-    min-width: 300px;
+    min-width: 450px;
 		max-width: 600px;
 		color: #303030;
 		background-color: #ffffff;
@@ -107,6 +107,9 @@ export default {
 	@media (max-width: $mobile-large) {
 		.modal-overlay {
 			align-items: flex-start;
+		}
+		.modal {
+			min-width: 300px;
 		}
 	}
 </style>
