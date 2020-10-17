@@ -1,21 +1,27 @@
 <template>
 	<div class="toolbar">
 		<div class="toolbar__inner">
-			<select class="input toolbar__select" @change="changeTypeHandler">
-				<option value="all">Выберите жанр</option>
-				<option
-					v-for="tag in getFilmsTags"
-					:key="tag"
-					:value="tag"
-					:selected="tag === getFilmsCurrentTag"
-				>{{ tag }}</option>
-			</select>
-			<select class="input toolbar__select" @change="changeSortHandler">
-				<option value="title">По имени</option>
-				<option value="rating">По рейтингу</option>
-			</select>
+			<label class="toolbar__label">
+				<span class="toolbar__title">Выберите жанр:</span>
+				<select class="input toolbar__select" @change="changeTypeHandler">
+					<option value="all">Все</option>
+					<option
+						v-for="tag in getFilmsTags"
+						:key="tag"
+						:value="tag"
+						:selected="tag === getFilmsCurrentTag"
+					>{{ tag }}</option>
+				</select>
+			</label>
+			<label class="toolbar__label">
+				<span class="toolbar__title">Сортировать:</span>
+				<select class="input toolbar__select" @change="changeSortHandler">
+					<option value="title">По имени</option>
+					<option value="rating">По рейтингу</option>
+				</select>
+			</label>
 			<button
-				class="button button--icon-plus button--auto-height toolbar__button"
+				class="button button--icon-plus toolbar__button"
 				title="Добавить фильм"
 				@click="openModalHandler"
 			></button>
@@ -84,8 +90,15 @@ export default {
 		padding: 10px 0;
 		&__inner {
 			display: flex;
+			align-items: flex-end;
+		}
+		&__title {
+			display: block;
+			margin-bottom: 5px;
+			font-size: 14px;
 		}
 		&__select {
+			min-width: 150px;
 			margin-right: 10px;
 		}
 	}
