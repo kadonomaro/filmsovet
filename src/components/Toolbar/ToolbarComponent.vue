@@ -1,7 +1,7 @@
 <template>
 	<div class="toolbar">
 		<div class="toolbar__inner">
-			<select class="input toolbar__select" @change="changeHandler">
+			<select class="input toolbar__select" @change="changeTypeHandler">
 				<option value="all">Выберите жанр</option>
 				<option
 					v-for="tag in getFilmsTags"
@@ -9,6 +9,10 @@
 					:value="tag"
 					:selected="tag === getFilmsCurrentTag"
 				>{{ tag }}</option>
+			</select>
+			<select class="input toolbar__select" @change="changeSortHandler">
+				<option value="title">По имени</option>
+				<option value="rating">По рейтингу</option>
 			</select>
 			<button
 				class="button button--icon-plus button--auto-height toolbar__button"
@@ -24,19 +28,6 @@
       <template v-slot:body>
 				<FilmNewForm :submitted="modal.submitted" @on-submit="submitHandler" @on-cancel="closeModalHandler" />
       </template>
-			<!-- <template v-slot:footer>
-				<button
-					class="button button--icon-check"
-					style="margin-right: 5px"
-					title="Добавить"
-					@click="acceptHandler"
-				></button>
-				<button
-					class="button button--danger button--icon-cancel"
-					title="Отмена"
-					@click="closeModalHandler"
-				></button>
-      </template> -->
     </AppModal>
 
 	</div>
@@ -61,8 +52,12 @@ export default {
 		}
 	},
 	methods: {
-		changeHandler(event) {
+		changeTypeHandler(event) {
 			this.$store.dispatch('changeFilmType', event.target.value);
+		},
+
+		changeSortHandler(event) {
+			this.$store.dispatch('changeFilmSort', event.target.value);
 		},
 
 		openModalHandler() {
