@@ -99,24 +99,15 @@ export default new Vuex.Store({
 	},
 	getters: {
 		getFilms(state) {
-			return [
-				...state.films
-				.sort((a, b) => a.title > b.title ? 1 : -1)
-				.filter(film => state.options.type === 'all' ? film : film.tags.includes(state.options.type))
-				.filter(film => !film.expected && !film.viewed)
-			]
+			return getFilms(state, 'all');
 		},
 
 		getExpectedFilms(state) {
-			return state.films
-				.filter(film => film.expected === true)
-				.filter(film => state.options.type === 'all' ? film : film.tags.includes(state.options.type));
+			return getFilms(state, 'expected');
 		},
 
 		getViewedFilms(state) {
-			return state.films
-				.filter(film => film.viewed === true)
-				.filter(film => state.options.type === 'all' ? film : film.tags.includes(state.options.type));
+			return getFilms(state, 'viewed');
 		},
 
 		getFilmsTags(state) {
@@ -128,3 +119,11 @@ export default new Vuex.Store({
 		}
 	}
 });
+
+
+const getFilms = (state, type) => {
+	return [...state.films]
+		.sort((a, b) => a.title > b.title ? 1 : -1)
+		.filter(film => type === 'all' ? !film.expected && !film.viewed : film[type])
+		.filter(film => state.options.type === 'all' ? film : film.tags.includes(state.options.type));
+}
