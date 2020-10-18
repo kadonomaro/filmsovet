@@ -123,8 +123,12 @@ export default new Vuex.Store({
 			return [...state.films.flatMap(film => film.tags).filter(uniqueArray).sort()];
 		},
 
-		getFilmsCurrentTag(state) {
+		getFilmsCurrentType(state) {
 			return state.options.type;
+		},
+
+		getFilmsCurrentSort(state) {
+			return state.options.sort;
 		}
 	}
 });

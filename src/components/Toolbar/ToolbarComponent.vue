@@ -9,15 +9,15 @@
 						v-for="tag in getFilmsTags"
 						:key="tag"
 						:value="tag"
-						:selected="tag === getFilmsCurrentTag"
+						:selected="tag === getFilmsCurrentType"
 					>{{ tag }}</option>
 				</select>
 			</label>
 			<label class="toolbar__label">
 				<span class="toolbar__title">Сортировать:</span>
 				<select class="input toolbar__select" @change="changeSortHandler">
-					<option value="title">По имени</option>
-					<option value="rating">По рейтингу</option>
+					<option value="title" :selected="getFilmsCurrentSort === 'title'">По имени</option>
+					<option value="rating" :selected="getFilmsCurrentSort === 'rating'">По рейтингу</option>
 				</select>
 			</label>
 			<button
@@ -80,7 +80,11 @@ export default {
 		}
 	},
 	computed: {
-		...mapGetters(['getFilmsTags', 'getFilmsCurrentTag'])
+		...mapGetters([
+			'getFilmsTags',
+			'getFilmsCurrentType',
+			'getFilmsCurrentSort'
+		])
 	}
 }
 </script>
