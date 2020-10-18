@@ -94,6 +94,7 @@ export default {
 		padding: 10px 0;
 		&__inner {
 			display: flex;
+			flex-wrap: wrap;
 			align-items: flex-end;
 		}
 		&__title {
@@ -101,9 +102,29 @@ export default {
 			margin-bottom: 5px;
 			font-size: 14px;
 		}
+		&__label {
+			margin-right: 10px;
+		}
 		&__select {
 			min-width: 150px;
-			margin-right: 10px;
+		}
+	}
+
+
+	@media (max-width: $mobile-small) {
+		.toolbar {
+			&__inner {
+				flex-wrap: wrap;
+			}
+			&__label {
+				width: 100%;
+				margin-right: 0;
+				margin-bottom: 10px;
+			}
+			&__select {
+				width: 100%;
+				min-width: 120px;
+			}
 		}
 	}
 </style>
