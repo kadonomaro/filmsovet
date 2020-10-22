@@ -44,7 +44,8 @@ export default {
 		.header {
 			padding: 10px;
 			&__logo {
-				left: 10px;
+				position: relative;
+				left: 0;
 			}
 			&__nav {
 				justify-content: flex-end;

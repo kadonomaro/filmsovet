@@ -101,6 +101,7 @@ export default {
 			display: block;
 			margin-bottom: 5px;
 			font-size: 14px;
+			line-height: 1;
 		}
 		&__label {
 			margin-right: 10px;
