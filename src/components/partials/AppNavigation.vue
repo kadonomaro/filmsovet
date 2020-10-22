@@ -1,23 +1,37 @@
 <template>
 	<nav class="navigation">
-		<button class="navigation__toggle" @click="toggleNavigation"></button>
-		<ul class="navigation__list" :class="{'navigation__list--open': isOpen}">
+		<button
+			class="navigation__toggle"
+			:class="{ 'navigation__toggle--active': isOpen}"
+			@click="toggleNavigation"
+		>
+			<span class="navigation__toggle-line"></span>
+			<span class="navigation__toggle-line"></span>
+			<span class="navigation__toggle-line"></span>
+		</button>
+		<ul
+			class="navigation__list"
+			:class="{ 'navigation__list--open': isOpen }"
+		>
 			<li class="navigation__item">
 				<router-link
 					class="navigation__link"
 					:to="{ name: 'HomePage' }"
+					@click.native="isOpen = false"
 				>Главная</router-link>
 			</li>
 			<li class="navigation__item">
 				<router-link
 					class="navigation__link"
 					:to="{ name: 'ExpectedPage' }"
+					@click.native="isOpen = false"
 				>Хочу посмотреть</router-link>
 			</li>
 			<li class="navigation__item">
 				<router-link
 					class="navigation__link"
 					:to="{ name: 'ViewedPage' }"
+					@click.native="isOpen = false"
 				>Уже посмотрел</router-link>
 			</li>
 		</ul>
@@ -36,6 +50,15 @@ export default {
 		toggleNavigation() {
 			this.isOpen = !this.isOpen;
 		}
+	},
+	watch: {
+		isOpen(value) {
+			if (value) {
+				document.body.classList.add('no-scroll');
+			} else {
+				document.body.classList.remove('no-scroll');
+			}
+		}
 	}
 }
 </script>
@@ -49,15 +72,32 @@ export default {
 			right: 0;
 			top: 50%;
 			display: none;
-			width: 40px;
-			height: 40px;
+			width: 30px;
+			height: 20px;
+			padding: 0;
 			margin-left: auto;
 			background-color: transparent;
-			background-image: url("data:image/svg+xml, %3Csvg fill='%23a0a0a0' width='30' height='30' viewBox='0 0 18 18' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cpath d='M10.415 9L15 13.584 13.587 15 9 10.415 4.413 15 3 13.584 7.585 9 3 4.416 4.413 3 9 7.585 13.587 3 15 4.416 10.415 9z'%3E%3C/path%3E%3C/svg%3E");
-			background-size: cover;
-			background-repeat: no-repeat;
 			border: none;
 			transform: translateY(-50%);
+			outline: none;
+		}
+		&__toggle-line {
+			position: absolute;
+			display: block;
+			width: 30px;
+			height: 2px;
+			background-color: #a0a0a0;
+			transform-origin: center;
+			transition: transform 0.3s ease-in, opacity 0.3s ease-in;
+			&:first-child {
+				top: 0;
+			}
+			&:nth-child(2) {
+				top: 50%;
+			}
+			&:last-child {
+				top: 100%;
+			}
 		}
 		&__list {
 			display: flex;
@@ -89,6 +129,17 @@ export default {
 			width: 100%;
 			&__toggle {
 				display: block;
+			}
+			&__toggle--active &__toggle-line {
+				&:first-child {
+					transform: translateY(10px) rotate(45deg);
+				}
+				&:nth-child(2) {
+					opacity: 0;
+				}
+				&:last-child {
+					transform: translateY(-10px) rotate(-45deg);
+				}
 			}
 			&__list {
 				position: fixed;
