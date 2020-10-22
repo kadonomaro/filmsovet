@@ -42,7 +42,11 @@ export default {
 
 	@media (max-width: $tablet-small) {
 		.header {
+			position: fixed;
+			z-index: 1000;
+			width: 100%;
 			padding: 10px;
+			box-sizing: border-box;
 			&__logo {
 				position: relative;
 				left: 0;

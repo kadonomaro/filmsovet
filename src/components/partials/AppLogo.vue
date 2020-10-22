@@ -34,4 +34,11 @@ export default {
 			pointer-events: initial;
 		}
 	}
+
+
+	@media (max-width: $tablet-small) {
+		.logo {
+			max-width: 90px;
+		}
+	}
 </style>

@@ -40,4 +40,11 @@ export default {
 .content {
 	flex-grow: 1;
 }
+
+
+@media (max-width: $tablet-small) {
+	.content {
+		padding-top: 60px;
+	}
+}
 </style>

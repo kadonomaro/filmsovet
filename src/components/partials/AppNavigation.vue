@@ -149,7 +149,7 @@ export default {
 				left: 0;
 				right: 0;
 				display: block;
-				padding: 15px 25px;
+				padding: 10px 15px;
 				background-color: #141414;
 				transform: translateX(-100%);
 				transition: transform .3s ease-in;
@@ -157,6 +157,9 @@ export default {
 			}
 			&__list--open {
 				transform: translateX(0);
+			}
+			&__item {
+				margin: 0;
 			}
 			&__link {
 				display: inline-block;
