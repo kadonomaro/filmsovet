@@ -53,7 +53,6 @@ export default {
 			width: 30px;
 			height: 30px;
 			margin-right: 5px;
-			margin-left: 15px;
 			padding: 3px;
 			background-color: #ffffff;
 			border-radius: 50%;

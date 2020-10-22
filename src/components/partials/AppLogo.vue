@@ -1,6 +1,9 @@
 <template>
 	<div class="logo">
-		<img :src="logo" alt="" class="logo__image">
+		<img :src="logo" alt="ФильмСовет" class="logo__image" v-if="isHomePage">
+		<router-link class="logo__link" :to="{ name: 'HomePage' }" v-else>
+			<img :src="logo" alt="ФильмСовет" class="logo__image">
+		</router-link>
 	</div>
 </template>
 
@@ -13,6 +16,11 @@ export default {
 		return {
 			logo
 		}
+	},
+	computed: {
+		isHomePage() {
+			return this.$route.name === 'HomePage';
+		}
 	}
 }
 </script>
@@ -21,5 +29,9 @@ export default {
 	.logo {
 		max-width: 120px;
 		pointer-events: none;
+		&__link {
+			display: block;
+			pointer-events: initial;
+		}
 	}
 </style>
