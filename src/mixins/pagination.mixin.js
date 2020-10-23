@@ -3,7 +3,7 @@ export default {
     return {
       page: +this.$route.query.page || 1,
       pageSize: 12,
-      pageRange: 1,
+      pageRange: 3,
       pageCount: 0,
       allItems: [],
       items: []
