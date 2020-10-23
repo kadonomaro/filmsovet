@@ -2,8 +2,18 @@
   <div class="page">
     <h1 class="page__title">Уже посмотрел</h1>
 		<ToolbarComponent />
-		<FilmList :list="getViewedFilms" v-if="getViewedFilms.length"/>
+		<FilmList :list="items" v-if="getViewedFilms.length"/>
 		<FilmEmpty v-else/>
+		<paginate
+      v-if="getViewedFilms.length > pageSize"
+      v-model="page"
+      :page-count="pageCount"
+      :page-range="pageRange"
+      :click-handler="pageChangeHandler"
+      :prev-text="'<'"
+      :next-text="'>'"
+      :container-class="'paginate'">
+    </paginate>
   </div>
 </template>
 
@@ -12,16 +22,26 @@ import { mapGetters } from 'vuex';
 import FilmList from '@/components/Film/FilmList';
 import FilmEmpty from '@/components/Film/FilmEmpty';
 import ToolbarComponent from '@/components/Toolbar/ToolbarComponent';
+import paginationMixin from '@/mixins/pagination.mixin';
 
 export default {
 	name: 'ViewedPage',
+	mixins: [paginationMixin],
 	components: {
 		FilmList,
 		FilmEmpty,
 		ToolbarComponent
 	},
+	mounted() {
+		this.setupPagination(this.getViewedFilms);
+	},
 	computed: {
 		...mapGetters(['getViewedFilms'])
+	},
+	watch: {
+		getViewedFilms(films) {
+			this.setupPagination(films);
+		}
 	},
 	metaInfo() {
 		return {
