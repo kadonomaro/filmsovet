@@ -10,8 +10,10 @@
 					v-model="film.title"
 					@blur="$v.film.title.$touch()"
 				>
-				<span class="film-new__error" v-if="$v.film.title.$error">Поле обязательно для заполнения</span>
+				<span class="film-new__error" v-if="$v.film.title.$dirty && !$v.film.title.required">Поле обязательно для заполнения</span>
+				<span class="film-new__error" v-else-if="!$v.film.title.notExists">Такой фильм уже существует</span>
 			</label>
+
 			<label class="film-new__label">
 				<span class="film-new__title">Описание</span>
 				<textarea
@@ -23,6 +25,7 @@
 				></textarea>
 				<span class="film-new__warning" v-if="$v.film.description.$error">Поле желательно для заполнения</span>
 			</label>
+
 			<label class="film-new__label">
 				<span class="film-new__title">Ссылка</span>
 				<input
@@ -34,6 +37,7 @@
 				>
 				<span class="film-new__warning" v-if="$v.film.link.$error">Поле желательно для заполнения</span>
 			</label>
+
 			<label class="film-new__label">
 				<span class="film-new__title">Ссылка на изображение</span>
 				<input
@@ -45,6 +49,7 @@
 				>
 				<span class="film-new__warning" v-if="$v.film.image.$error">Поле желательно для заполнения</span>
 			</label>
+
 			<label class="film-new__label">
 				<span class="film-new__title">Рейтинг</span>
 				<input
@@ -56,6 +61,7 @@
 				>
 				<span class="film-new__warning" v-if="$v.film.rating.$error">Поле желательно для заполнения</span>
 			</label>
+
 			<label class="film-new__label">
 				<span class="film-new__title">Жанр</span>
 				<input
@@ -67,6 +73,7 @@
 				>
 				<span class="film-new__warning" v-if="$v.film.tags.$error">Поле желательно для заполнения</span>
 			</label>
+
 			<div class="film-new__controls">
 				<button
 					class="button button--icon-check"
@@ -86,6 +93,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import { required } from 'vuelidate/lib/validators';
 import { splitString } from '@/helpers';
 
@@ -108,7 +116,12 @@ export default {
 	},
 	validations: {
 		film: {
-			title: { required },
+			title: {
+				required,
+				notExists(value) {
+					return !this.getFilmsNames.includes(value.toLowerCase().trim());
+				}
+			},
 			description: { required },
 			link: { required },
 			image: { required },
@@ -144,6 +157,9 @@ export default {
 				viewed: false
 			}
 		}
+	},
+	computed: {
+		...mapGetters(['getFilmsNames'])
 	}
 }
 </script>

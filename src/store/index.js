@@ -123,6 +123,10 @@ export default new Vuex.Store({
 			return [...state.films.flatMap(film => film.tags).filter(uniqueArray).sort()];
 		},
 
+		getFilmsNames(state) {
+			return state.films.map(film => film.title.toLowerCase());
+		},
+
 		getFilmsCurrentType(state) {
 			return state.options.type;
 		},
