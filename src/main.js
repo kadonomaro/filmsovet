@@ -7,6 +7,7 @@ import router from './router';
 import store from './store';
 import VueMeta from 'vue-meta'
 import Vuelidate from 'vuelidate';
+import Paginate from 'vuejs-paginate';
 import '@/assets/css/style.scss';
 
 
@@ -36,6 +37,7 @@ export { database };
 
 Vue.use(VueMeta);
 Vue.use(Vuelidate);
+Vue.component('paginate', Paginate);
 
 Vue.config.productionTip = false;
 
