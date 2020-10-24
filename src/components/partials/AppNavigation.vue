@@ -5,34 +5,16 @@
 			:class="{ 'navigation__toggle--active': isOpen}"
 			@click="toggleNavigation"
 		>
-			<span class="navigation__toggle-line"></span>
-			<span class="navigation__toggle-line"></span>
-			<span class="navigation__toggle-line"></span>
+			<span class="navigation__toggle-line" v-for="line in 3" :key="line"></span>
 		</button>
-		<ul
-			class="navigation__list"
-			:class="{ 'navigation__list--open': isOpen }"
-		>
-			<li class="navigation__item">
+		<ul class="navigation__list" :class="{ 'navigation__list--open': isOpen }">
+			<li class="navigation__item" v-for="route in routes" :key="route.name">
 				<router-link
 					class="navigation__link"
-					:to="{ name: 'HomePage' }"
+					:class="{ 'navigation__link--active': route.name === $route.name }"
+					:to="{ name: route.name }"
 					@click.native="isOpen = false"
-				>Главная</router-link>
-			</li>
-			<li class="navigation__item">
-				<router-link
-					class="navigation__link"
-					:to="{ name: 'ExpectedPage' }"
-					@click.native="isOpen = false"
-				>Хочу посмотреть</router-link>
-			</li>
-			<li class="navigation__item">
-				<router-link
-					class="navigation__link"
-					:to="{ name: 'ViewedPage' }"
-					@click.native="isOpen = false"
-				>Уже посмотрел</router-link>
+				>{{ route.title }}</router-link>
 			</li>
 		</ul>
 	</nav>
@@ -43,7 +25,21 @@ export default {
 	name: 'AppNavigation',
 	data() {
 		return {
-			isOpen: false
+			isOpen: false,
+			routes: [
+				{
+					title: 'Главная',
+					name: 'HomePage'
+				},
+				{
+					title: 'Хочу посмотреть',
+					name: 'ExpectedPage'
+				},
+				{
+					title: 'Уже посмотрел',
+					name: 'ViewedPage'
+				}
+			]
 		}
 	},
 	methods: {
@@ -118,7 +114,7 @@ export default {
 			border-bottom: 3px solid transparent;
 			transition: border-color 0.1s ease-in;
 		}
-		&__link.router-link-exact-active {
+		&__link--active {
 			border-color: $color-accent;
 		}
 	}
