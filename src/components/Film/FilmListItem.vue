@@ -36,28 +36,15 @@
 		<div class="film-item__controls">
 			<button
 				class="button button--icon-bookmark film-item__button"
-				title="Хочу посмотреть"
+				:class="{ 'button--danger': film.expected }"
+				:title="film.expected ? 'Убрать из ожидаемых' : 'Хочу посмотреть'"
 				@click="changeExpectedFilm"
-				v-if="!film.expected"
 			></button>
-			<button
-				class="button button--danger button--icon-cancel film-item__button"
-				title="Убрать из ожидаемых"
-				@click="changeExpectedFilm"
-				v-else
-			></button>
-
 			<button
 				class="button button--icon-check film-item__button"
-				title="Уже посмотрел"
+				:class="{ 'button--danger': film.viewed }"
+				:title="film.viewed ? 'Убрать из просмотренных' : 'Уже посмотрел'"
 				@click="changeViewedFilm"
-				v-if="!film.viewed"
-			></button>
-			<button
-				class="button button--danger button--icon-cancel film-item__button"
-				title="Убрать из просмотренных"
-				@click="changeViewedFilm"
-				v-else
 			></button>
 		</div>
 	</div>

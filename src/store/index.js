@@ -74,8 +74,8 @@ export default new Vuex.Store({
   actions: {
 		async fetchData({ commit }) {
 			const data = await db.load();
-			const expectedData = expectedStorage.load();
-			const viewedData = viewedStorage.load();
+			const expectedData = expectedStorage.load().filter(item => item.expected);
+			const viewedData = viewedStorage.load().filter(item => item.viewed);
 
 			const films = Object.values(data).map(film => {
 				const expected = expectedData.find(expected => film.id === expected.id);
