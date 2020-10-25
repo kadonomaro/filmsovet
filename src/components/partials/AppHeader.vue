@@ -50,6 +50,7 @@ export default {
 			&__logo {
 				position: relative;
 				left: 0;
+				max-width: 100px;
 			}
 			&__nav {
 				justify-content: flex-end;

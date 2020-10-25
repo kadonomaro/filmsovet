@@ -68,8 +68,8 @@ export default {
 			right: 0;
 			top: 50%;
 			display: none;
-			width: 30px;
-			height: 20px;
+			width: 35px;
+			height: 24px;
 			padding: 0;
 			margin-left: auto;
 			background-color: transparent;
@@ -80,7 +80,7 @@ export default {
 		&__toggle-line {
 			position: absolute;
 			display: block;
-			width: 30px;
+			width: 100%;
 			height: 2px;
 			background-color: #a0a0a0;
 			transform-origin: center;
@@ -128,13 +128,13 @@ export default {
 			}
 			&__toggle--active &__toggle-line {
 				&:first-child {
-					transform: translateY(10px) rotate(45deg);
+					transform: translateY(12px) rotate(45deg);
 				}
 				&:nth-child(2) {
 					opacity: 0;
 				}
 				&:last-child {
-					transform: translateY(-10px) rotate(-45deg);
+					transform: translateY(-12px) rotate(-45deg);
 				}
 			}
 			&__list {

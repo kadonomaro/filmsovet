@@ -44,7 +44,7 @@ export default {
 
 @media (max-width: $tablet-small) {
 	.content {
-		padding-top: 60px;
+		padding-top: 65px;
 	}
 }
 </style>
