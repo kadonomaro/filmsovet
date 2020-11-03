@@ -14,7 +14,7 @@
 					:class="{ 'navigation__link--active': route.name === $route.name }"
 					:to="{ name: route.name }"
 					@click.native="isOpen = false"
-				>{{ route.title }}</router-link>
+				>{{ route.meta.title }}</router-link>
 			</li>
 		</ul>
 	</nav>
@@ -25,26 +25,17 @@ export default {
 	name: 'AppNavigation',
 	data() {
 		return {
-			isOpen: false,
-			routes: [
-				{
-					title: 'Главная',
-					name: 'HomePage'
-				},
-				{
-					title: 'Хочу посмотреть',
-					name: 'ExpectedPage'
-				},
-				{
-					title: 'Уже посмотрел',
-					name: 'ViewedPage'
-				}
-			]
+			isOpen: false
 		}
 	},
 	methods: {
 		toggleNavigation() {
 			this.isOpen = !this.isOpen;
+		}
+	},
+	computed: {
+		routes() {
+			return this.$router.options.routes;
 		}
 	},
 	watch: {

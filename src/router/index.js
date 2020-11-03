@@ -8,17 +8,26 @@ const routes = [
   {
     path: '/',
     name: 'HomePage',
-    component: HomePage
+		component: HomePage,
+		meta: {
+			title: 'Главная'
+		}
   },
   {
     path: '/expected',
     name: 'ExpectedPage',
-    component: () => import(/* webpackChunkName: "about" */ '../pages/ExpectedPage.vue')
+		component: () => import(/* webpackChunkName: "about" */ '../pages/ExpectedPage.vue'),
+		meta: {
+			title: 'Хочу посмотреть'
+		}
   },
   {
     path: '/viewed',
     name: 'ViewedPage',
-    component: () => import(/* webpackChunkName: "about" */ '../pages/ViewedPage.vue')
+		component: () => import(/* webpackChunkName: "about" */ '../pages/ViewedPage.vue'),
+		meta: {
+			title: 'Уже посмотрел'
+		}
   }
 ]
 
