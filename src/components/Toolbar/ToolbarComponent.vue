@@ -16,7 +16,7 @@
 			<label class="toolbar__label">
 				<span class="toolbar__title">Сортировать:</span>
 				<select class="input toolbar__select" @change="changeSortHandler">
-					<option value="title" :selected="getFilmsCurrentSort === 'title'">По имени</option>
+					<option value="title" :selected="getFilmsCurrentSort === 'title'">По названию</option>
 					<option value="rating" :selected="getFilmsCurrentSort === 'rating'">По рейтингу</option>
 				</select>
 			</label>
@@ -32,7 +32,10 @@
 				<span>Добавить новый фильм</span>
       </template>
       <template v-slot:body>
-				<FilmNewForm :submitted="modal.submitted" @on-submit="submitHandler" @on-cancel="closeModalHandler" />
+				<FilmNewForm
+					@on-submit="submitHandler"
+					@on-cancel="closeModalHandler"
+				/>
       </template>
     </AppModal>
 

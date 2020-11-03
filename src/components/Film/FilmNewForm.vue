@@ -145,17 +145,13 @@ export default {
 
 		reset() {
 			this.$v.$reset();
-			this.film = {
-				id: '',
-				title: '',
-				description: '',
-				link: '',
-				image: '',
-				rating: '',
-				tags: '',
-				expected: false,
-				viewed: false
-			}
+			Object.keys(this.film).forEach(key => {
+				if (typeof this.film[key] === 'boolean') {
+					this.film[key] = false;
+				} else {
+					this.film[key] = '';
+				}
+			});
 		}
 	},
 	computed: {
