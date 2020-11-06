@@ -1,6 +1,6 @@
 <template>
 	  <transition name="modal-fade">
-    <div class="modal-overlay" @click.self="closeHandler">
+    <div class="modal-overlay" @click.self="closeHandler" v-escape="closeHandler">
       <div class="modal">
         <header class="modal__header" v-if="$slots.header">
           <slot name="header"></slot>

@@ -10,6 +10,8 @@ import Vuelidate from 'vuelidate';
 import Paginate from 'vuejs-paginate';
 import '@/assets/css/style.scss';
 
+import EscapeDirective from '@/directives/escape.directive';
+
 
 const firebaseDevConfig = {
 	apiKey: process.env.VUE_APP_FIREBASE_API_KEY,
@@ -38,6 +40,7 @@ export { database };
 Vue.use(VueMeta);
 Vue.use(Vuelidate);
 Vue.component('paginate', Paginate);
+Vue.directive('escape', EscapeDirective);
 
 Vue.config.productionTip = false;
 
