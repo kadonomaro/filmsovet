@@ -15,7 +15,7 @@
 			</label>
 
 			<label class="film-new__label">
-				<span class="film-new__title">Описание</span>
+				<span class="film-new__title">Описание ({{film.description.length}} сим.)</span>
 				<textarea
 					class="input film-new__input film-new__textarea"
 					:class="{ 'input--warning': $v.film.description.$error }"
@@ -23,7 +23,11 @@
 					v-model="film.description"
 					@blur="$v.film.description.$touch()"
 				></textarea>
-				<span class="film-new__warning" v-if="$v.film.description.$error">Поле желательно для заполнения</span>
+				<span class="film-new__warning" v-if="$v.film.description.$dirty && !$v.film.description.required">Поле желательно для заполнения</span>
+				<span
+					class="film-new__warning"
+					v-else-if="!$v.film.description.maxLength"
+				>Лучше использовать не более {{$v.film.description.$params.maxLength.max}} сим.</span>
 			</label>
 
 			<label class="film-new__label">
@@ -94,7 +98,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import { required } from 'vuelidate/lib/validators';
+import { required, maxLength } from 'vuelidate/lib/validators';
 import { splitString } from '@/helpers';
 
 export default {
@@ -122,7 +126,7 @@ export default {
 					return !this.getFilmsNames.includes(value.toLowerCase().trim());
 				}
 			},
-			description: { required },
+			description: { required, maxLength: maxLength(450) },
 			link: { required },
 			image: { required },
 			rating: { required },
@@ -173,6 +177,7 @@ export default {
 		}
 		&__textarea {
 			min-height: 100px;
+			max-height: 300px;
 		}
 		&__controls {
 			display: flex;
