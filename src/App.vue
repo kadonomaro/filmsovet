@@ -34,7 +34,7 @@ export default {
 	letter-spacing: 0.03em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #ffffff;
+  color: var(--color-text);
 }
 
 .content {

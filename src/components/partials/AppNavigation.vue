@@ -98,7 +98,7 @@ export default {
 		&__link {
 			display: block;
 			padding: 5px 0;
-			color: #ffffff;
+			color: var(--color-text);
 			font-size: 24px;
 			text-decoration: none;
 			letter-spacing: 0.03em;

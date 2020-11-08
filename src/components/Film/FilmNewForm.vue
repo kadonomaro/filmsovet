@@ -191,7 +191,7 @@ export default {
 			bottom: 3px;
 			width: 100%;
 			padding: 3px 6px;
-			color: #ffffff;
+			color: var(--color-text);
 			line-height: 14px;
 			border-bottom-left-radius: 5px;
 			border-bottom-right-radius: 5px;

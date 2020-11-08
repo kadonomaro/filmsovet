@@ -28,7 +28,7 @@ export default {
 <style lang="scss">
 	.footer {
 		padding: 15px 20px;
-		color: #ffffff;
+		color: var(--color-text);
 		background-color: var(--color-darkest);
 		&__inner {
 			display: flex;
@@ -44,7 +44,7 @@ export default {
 	.author {
 		display: flex;
 		align-items: center;
-		color: #ffffff;
+		color: var(--color-text);
 		text-decoration: none;
 		&:hover &__image {
 			background-color: #cecece;

@@ -1,16 +1,29 @@
 :root {
 	--color-accent: #f8b900;
-	--color-accent-hover: #dfa600;
 	--color-danger: #ff5e7b;
-	--color-danger-hover: #ff2b51;
 	--color-warning: #ff9900;
+	--color-accent-hover: #dfa600;
+	--color-danger-hover: #ff2b51;
+
 	--color-darkest: #101010;
 	--color-dark-gray: #141414;
 	--color-medium-gray: #a0a0a0;
 	--color-light-gray: #e4e4e4;
 	--color-background: #202020;
+	--color-text: #ffffff;
+
 	--desktop-small: 1366px;
 	--tablet-small: 1023px;
 	--mobile-large: 767px;
 	--mobile-small: 450px;
+}
+
+
+[theme="light"] {
+	--color-darkest: #dadada;
+	--color-dark-gray: #ebebeb;
+	--color-medium-gray: #a0a0a0;
+	--color-light-gray: #e4e4e4;
+	--color-background: #f1f1f1;
+	--color-text: #303030;
 }

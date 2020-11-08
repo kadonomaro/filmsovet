@@ -27,7 +27,7 @@ export default {
 		position: relative;
 		display: flex;
 		padding: 20px 15px;
-		background-color: #101010;
+		background-color: var(--color-darkest);
 		&__logo {
 			position: absolute;
 			left: 15px;
