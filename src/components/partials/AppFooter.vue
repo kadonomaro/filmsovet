@@ -1,7 +1,10 @@
 <template>
 	<footer class="footer">
 		<div class="footer__inner">
-			<div>ФильмСовет&copy; {{ new Date().getFullYear() }}</div>
+			<div>
+				ФильмСовет&copy; {{ new Date().getFullYear() }}
+				<ThemeSwitcher />
+			</div>
 			<div class="footer__author">
 				<a class="author" href="https://airsoftware.ru.com/" target="_blank">
 					<img class="author__image" :src="logo" alt="Airsoftware" title="Airsoftware">
@@ -14,9 +17,13 @@
 
 <script>
 import logo from '@/assets/airsoftware.png';
+import ThemeSwitcher from '@/components/partials/ThemeSwitcher';
 
 export default {
 	name: 'AppFooter',
+	components: {
+		ThemeSwitcher
+	},
 	data() {
 		return {
 			logo
