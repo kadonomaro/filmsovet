@@ -1,5 +1,5 @@
 <template>
-	<div class="film-item">
+	<div class="film-item" :class="{ 'film-item--shadow': getTheme === 'light' }">
 		<span class="film-item__rating" v-if="film.rating">{{ film.rating }}</span>
 
 		<div class="film-item__image">
@@ -51,6 +51,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
 	name: 'FilmListItem',
 	props: {
@@ -69,6 +71,7 @@ export default {
 		}
 	},
 	computed: {
+		...mapGetters(['getTheme']),
 		image() {
 			return this.film.image || 'https://via.placeholder.com/400x200?text=No+image'
 		}
@@ -139,6 +142,12 @@ export default {
 			&:not(:last-child) {
 				margin-right: 10px;
 			}
+		}
+	}
+	.film-item--shadow {
+		transition: box-shadow 0.2s ease-in;
+		&:hover {
+			box-shadow: 0 3px 10px rgba($color: #000000, $alpha: 0.2);
 		}
 	}
 

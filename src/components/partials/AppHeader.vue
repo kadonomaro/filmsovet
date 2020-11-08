@@ -1,5 +1,5 @@
 <template>
-  <header class="header">
+  <header class="header" :class="{ 'header--shadow': getTheme === 'light' }">
 		<div class="header__logo">
 			<AppLogo />
 		</div>
@@ -10,6 +10,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import AppNavigation from './AppNavigation';
 import AppLogo from './AppLogo';
 
@@ -18,6 +19,9 @@ export default {
 	components: {
 		AppLogo,
 		AppNavigation
+	},
+	computed: {
+		...mapGetters(['getTheme'])
 	}
 }
 </script>
@@ -37,6 +41,9 @@ export default {
 			flex-grow: 1;
 			justify-content: center;
 		}
+	}
+	.header--shadow {
+		box-shadow: 0 3px 7px rgba($color: #303030, $alpha: 0.2);
 	}
 
 
