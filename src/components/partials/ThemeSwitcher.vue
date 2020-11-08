@@ -13,6 +13,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
 	name: 'ThemeSwitcher',
 	data() {
@@ -20,10 +22,16 @@ export default {
 			checked: false
 		}
 	},
+	mounted() {
+		this.checked = this.getTheme === 'dark' ? false : true;
+	},
 	methods: {
 		changeHandler() {
 			this.$store.dispatch('changeTheme', this.checked ? 'light' : 'dark');
 		}
+	},
+	computed: {
+		...mapGetters(['getTheme'])
 	}
 }
 </script>

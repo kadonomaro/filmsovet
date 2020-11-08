@@ -75,6 +75,8 @@ export default new Vuex.Store({
 
 		CHANGE_THEME(state, theme) {
 			state.options.theme = theme;
+			themeStorage.save(theme);
+			document.documentElement.setAttribute('theme', theme);
 		}
   },
   actions: {
@@ -89,6 +91,11 @@ export default new Vuex.Store({
 				return { ...film, ...expected, ...viewed };
 			});
 			commit('INIT_FILMS', { films,  expectedData, viewedData });
+		},
+
+		fetchTheme({ commit }) {
+			const theme = themeStorage.load() || 'dark';
+			commit('CHANGE_THEME', theme);
 		},
 
 		async addData({ commit }, data) {
@@ -114,11 +121,7 @@ export default new Vuex.Store({
 
 		changeTheme({ commit }, theme) {
 			commit('CHANGE_THEME', theme);
-			themeStorage.save(theme);
-			document.documentElement.setAttribute('theme', theme);
 		}
-
-
 	},
 	getters: {
 		getFilms(state) {
