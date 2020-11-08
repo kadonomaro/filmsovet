@@ -47,7 +47,7 @@ export default {
 			align-items: center;
 		}
 		&__copy {
-			margin-right: 5px;
+			margin-right: 10px;
 		}
 		&__author {
 			margin-left: 10px;
@@ -77,6 +77,7 @@ export default {
 
 	@media (max-width: 767px) {
 		.footer {
+			padding: 10px;
 			&__col {
 				display: block;
 			}

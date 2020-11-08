@@ -15,11 +15,11 @@ export default {
 		padding: 10px 0;
 		&__text {
 			padding: 20px;
-			color: var(--color-medium-gray);
+			color: var(--color-text);
 			font-size: 24px;
 			text-align: center;
 			border-radius: 5px;
-			border: 2px dashed var(--color-dark-gray);
+			border: 2px dashed var(--color-darkest);
 		}
 	}
 </style>

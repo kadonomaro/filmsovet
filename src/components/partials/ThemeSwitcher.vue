@@ -1,5 +1,5 @@
 <template>
-	<div class="theme-switch">
+	<div class="theme-switch" title="Переключить тему">
 		<label class="theme-switch__label">
 			<input
 				class="theme-switch__input visually-hidden"
@@ -30,6 +30,10 @@ export default {
 
 <style lang="scss">
 	.theme-switch {
+		&__label {
+			display: inline-block;
+			vertical-align: middle;
+		}
 		&__input {
 			&:checked ~ .theme-switch__custom {
 				&::before {
@@ -44,8 +48,8 @@ export default {
 			width: 60px;
 			height: 30px;
 			padding: 2px;
-			background-color: #cecece;
-			border: 1px solid #303030;
+			background-color: var(--color-text);
+			border: 2px solid var(--color-darkest);
 			border-radius: 100px;
 			box-sizing: border-box;
 			cursor: pointer;
@@ -54,9 +58,9 @@ export default {
 				content: '';
 				position: absolute;
 				top: 50%;
-				width: 24px;
-				height: 24px;
-				background-color: #303030;
+				width: 22px;
+				height: 22px;
+				background-color: var(--color-darkest);
 				border-radius: 50%;
 				transform: translate(0, -50%);
 				transition: transform 0.1s ease-in;
