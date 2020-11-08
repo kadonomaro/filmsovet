@@ -115,7 +115,7 @@ export default {
 	}
 
 
-	@media (max-width: var(--mobile-small)) {
+	@media (max-width: 450px) {
 		.toolbar {
 			&__inner {
 				flex-wrap: wrap;

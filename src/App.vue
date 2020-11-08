@@ -42,7 +42,7 @@ export default {
 }
 
 
-@media (max-width: var(--tablet-small)) {
+@media (max-width: 1023px) {
 	.content {
 		padding-top: 65px;
 	}

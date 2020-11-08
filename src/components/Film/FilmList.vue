@@ -38,7 +38,7 @@ export default {
 	}
 
 
-	@media (max-width: var(--desktop-small)) {
+	@media (max-width: 1366px) {
 		.film-list {
 			&__item {
 				flex-basis: 33.3333%;
@@ -47,7 +47,7 @@ export default {
 		}
 	}
 
-	@media (max-width: var(--tablet-small)) {
+	@media (max-width: 1023px) {
 		.film-list {
 			&__item {
 				flex-basis: 50%;
@@ -56,7 +56,7 @@ export default {
 		}
 	}
 
-	@media (max-width: var(--mobile-large)) {
+	@media (max-width: 767px) {
 		.film-list {
 			display: block;
 			&__item {

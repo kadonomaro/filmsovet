@@ -112,6 +112,9 @@ export default {
 			line-height: 1;
 			text-align: center;
 		}
+		&__desc {
+			line-height: 1.4;
+		}
 		&__rating {
 			position: absolute;
 			z-index: 9;

@@ -104,7 +104,7 @@ export default {
 	}
 
 
-	@media (max-width: var(--mobile-large)) {
+	@media (max-width: 767px) {
 		.modal-overlay {
 			align-items: flex-start;
 		}

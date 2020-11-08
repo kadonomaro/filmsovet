@@ -111,7 +111,7 @@ export default {
 	}
 
 
-	@media (max-width: var(--tablet-small)) {
+	@media (max-width: 1023px) {
 		.navigation {
 			width: 100%;
 			&__toggle {
