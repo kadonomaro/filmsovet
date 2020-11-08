@@ -29,7 +29,7 @@ export default {
 	.footer {
 		padding: 15px 20px;
 		color: #ffffff;
-		background-color: $color-darkest;
+		background-color: var(--color-darkest);
 		&__inner {
 			display: flex;
 			justify-content: space-between;

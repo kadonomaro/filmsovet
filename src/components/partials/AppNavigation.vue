@@ -106,12 +106,12 @@ export default {
 			transition: border-color 0.1s ease-in;
 		}
 		&__link--active {
-			border-color: $color-accent;
+			border-color: var(--color-accent);
 		}
 	}
 
 
-	@media (max-width: $tablet-small) {
+	@media (max-width: var(--tablet-small)) {
 		.navigation {
 			width: 100%;
 			&__toggle {

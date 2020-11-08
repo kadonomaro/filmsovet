@@ -2,7 +2,7 @@
 	margin: 0;
 	width: 60px;
 	height: 40px;
-	background-color: $color-accent;
+	background-color: var(--color-accent);
 	background-size: 25px;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -11,21 +11,21 @@
 	cursor: pointer;
 	transition: background-color 0.1s ease-in;
 	&:hover {
-		background-color: darken($color: $color-accent, $amount: 5%);
+		background-color: var(--color-accent-hover);
 	}
 	&:hover:disabled {
-		background-color: $color-medium-gray;
+		background-color: var(--color-medium-gray);
 	}
 	&:disabled {
 		opacity: 0.5;
 		cursor: initial;
-		background-color: $color-medium-gray;
+		background-color: var(--color-medium-gray);
 	}
 }
 .button--danger {
-	background-color: $color-danger;
+	background-color: var(--color-danger);
 	&:hover {
-		background-color: darken($color: $color-danger, $amount: 10%);
+		background-color: var(--color-danger-hover);
 	}
 }
 .button--auto-height {

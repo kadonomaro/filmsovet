@@ -1,10 +1,10 @@
 .input {
 	display: block;
 	padding: 6px 10px;
-	color: $color-dark-gray;
+	color: var(--color-dark-gray);
 	font-family: inherit;
 	font-size: inherit;
-	background-color: $color-light-gray;
+	background-color: var(--color-light-gray);
 	border: 2px solid transparent;
 	border-radius: 5px;
 	box-sizing: border-box;
@@ -12,18 +12,18 @@
 	outline: none;
 	resize: vertical;
 	&:focus {
-		border-color: $color-accent;
+		border-color: var(--color-accent);
 	}
 }
 .input--warning {
-	border-color: $color-warning;
+	border-color: var(--color-warning);
 	&:focus {
-		border-color: $color-warning;
+		border-color: var(--color-warning);
 	}
 }
 .input--error {
-	border-color: $color-danger;
+	border-color: var(--color-danger);
 	&:focus {
-		border-color: $color-danger;
+		border-color: var(--color-danger);
 	}
 }

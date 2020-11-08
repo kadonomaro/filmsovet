@@ -73,7 +73,7 @@ export default {
     &__footer {
 			justify-content: flex-end;
 			align-items: center;
-			background-color: $color-light-gray;
+			background-color: var(--color-light-gray);
     }
     &__button-close {
 			position: absolute;
@@ -87,7 +87,7 @@ export default {
 			cursor: pointer;
 			&:hover .modal__close-icon,
 			&:focus .modal__close-icon {
-				fill: $color-accent;
+				fill: var(--color-accent);
 			}
 		}
 		&__close-icon {
@@ -104,7 +104,7 @@ export default {
 	}
 
 
-	@media (max-width: $mobile-large) {
+	@media (max-width: var(--mobile-large)) {
 		.modal-overlay {
 			align-items: flex-start;
 		}

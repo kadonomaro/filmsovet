@@ -40,7 +40,7 @@ export default {
 	}
 
 
-	@media (max-width: $tablet-small) {
+	@media (max-width: var(--tablet-small)) {
 		.header {
 			position: fixed;
 			z-index: 1000;

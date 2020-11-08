@@ -199,10 +199,10 @@ export default {
 			box-sizing: border-box;
 		}
 		&__error {
-			background-color: $color-danger;
+			background-color: var(--color-danger);
 		}
 		&__warning {
-			background-color: $color-warning;
+			background-color: var(--color-warning);
 		}
 	}
 </style>

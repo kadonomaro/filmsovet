@@ -7,7 +7,7 @@
   list-style: none;
   li {
     color: #ffffff;
-    background-color: $color-dark-gray;
+    background-color: var(--color-dark-gray);
     border-radius: 5px;
     transition: background-color 0.2s ease-in;
 		&:not(:last-child) {
@@ -15,11 +15,11 @@
 		}
     &:hover,
     &:focus {
-      background-color: darken($color: $color-accent, $amount: 10%);
+      background-color: var(--color-accent-hover);
     }
   }
   li.active {
-		background-color: $color-accent;
+		background-color: var(--color-accent);
   }
   a {
     display: block;
