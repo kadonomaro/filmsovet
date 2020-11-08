@@ -22,7 +22,7 @@ export default {
 	},
 	methods: {
 		changeHandler() {
-			console.log(this.checked);
+			this.$store.dispatch('changeTheme', this.checked ? 'light' : 'dark');
 		}
 	}
 }

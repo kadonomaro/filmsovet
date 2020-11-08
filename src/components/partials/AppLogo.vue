@@ -8,18 +8,29 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import logo from '@/assets/logo.svg';
+import logoDark from '@/assets/logo--dark.svg';
 
 export default {
 	name: 'AppLogo',
 	data() {
 		return {
-			logo
+			logo: null
 		}
 	},
+	mounted() {
+		this.getTheme === 'dark' ? this.logo = logo : this.logo = logoDark;
+	},
 	computed: {
+		...mapGetters(['getTheme']),
 		isHomePage() {
 			return this.$route.name === 'HomePage';
+		}
+	},
+	watch: {
+		getTheme(value) {
+			value === 'dark' ? this.logo = logo : this.logo = logoDark;
 		}
 	}
 }

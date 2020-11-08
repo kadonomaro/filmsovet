@@ -9,6 +9,7 @@ Vue.use(Vuex);
 const db = new Database;
 const expectedStorage = new LocalStorage('expected');
 const viewedStorage = new LocalStorage('viewed');
+const themeStorage = new LocalStorage('theme');
 
 export default new Vuex.Store({
   state: {
@@ -17,7 +18,8 @@ export default new Vuex.Store({
 		viewedFilms: [],
 		options: {
 			type: 'all',
-			sort: 'title'
+			sort: 'title',
+			theme: 'dark'
 		}
   },
   mutations: {
@@ -69,6 +71,10 @@ export default new Vuex.Store({
 
 		CHANGE_SORT(state, sort) {
 			state.options.sort = sort;
+		},
+
+		CHANGE_THEME(state, theme) {
+			state.options.theme = theme;
 		}
   },
   actions: {
@@ -104,7 +110,15 @@ export default new Vuex.Store({
 
 		changeFilmSort({ commit }, sort) {
 			commit('CHANGE_SORT', sort);
+		},
+
+		changeTheme({ commit }, theme) {
+			commit('CHANGE_THEME', theme);
+			themeStorage.save(theme);
+			document.documentElement.setAttribute('theme', theme);
 		}
+
+
 	},
 	getters: {
 		getFilms(state) {
@@ -133,6 +147,10 @@ export default new Vuex.Store({
 
 		getFilmsCurrentSort(state) {
 			return state.options.sort;
+		},
+
+		getTheme(state) {
+			return state.options.theme;
 		}
 	}
 });

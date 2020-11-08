@@ -1,8 +1,8 @@
 <template>
 	<footer class="footer">
 		<div class="footer__inner">
-			<div>
-				ФильмСовет&copy; {{ new Date().getFullYear() }}
+			<div class="footer__col">
+				<span class="footer__copy">ФильмСовет&copy; {{ new Date().getFullYear() }}</span>
 				<ThemeSwitcher />
 			</div>
 			<div class="footer__author">
@@ -42,6 +42,13 @@ export default {
 			justify-content: space-between;
 			align-items: center;
 		}
+		&__col {
+			display: flex;
+			align-items: center;
+		}
+		&__copy {
+			margin-right: 5px;
+		}
 		&__author {
 			margin-left: 10px;
 		}
@@ -65,6 +72,14 @@ export default {
 			border-radius: 50%;
 			transition: background-color 0.1s ease-in;
 			box-sizing: border-box;
+		}
+	}
+
+	@media (max-width: 767px) {
+		.footer {
+			&__col {
+				display: block;
+			}
 		}
 	}
 </style>
