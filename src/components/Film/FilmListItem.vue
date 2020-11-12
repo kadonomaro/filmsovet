@@ -28,7 +28,9 @@
 		<div class="film-item__tags" v-if="film.tags">
 			<div class="tags">
 				<ul class="tags__list">
-					<li class="tags__item" v-for="tag in film.tags" :key="tag">{{ tag }}</li>
+					<li class="tags__item" v-for="tag in film.tags" :key="tag">
+						<button class="tags__button" @click="tagClickHandler(tag)">{{ tag }}</button>
+					</li>
 				</ul>
 			</div>
 		</div>
@@ -68,6 +70,10 @@ export default {
 
 		changeViewedFilm() {
 			this.$store.dispatch('changeViewedFilm', this.film.id);
+		},
+
+		tagClickHandler(tag) {
+			this.$store.dispatch('changeFilmType', tag);
 		}
 	},
 	computed: {
@@ -163,6 +169,22 @@ export default {
 		&__item {
 			&:not(:last-child) {
 				margin-right: 10px;
+			}
+		}
+		&__button {
+			color: var(--color-text);
+			font-family: inherit;
+			font-size: inherit;
+			background-color: transparent;
+			border: none;
+			border-radius: 5px;
+			transition: color 0.1s ease-in, background-color 0.1s ease-in;
+			cursor: pointer;
+			outline: none;
+			&:hover,
+			&:focus {
+				color: var(--color-darkest);
+				background-color: var(--color-text);
 			}
 		}
 	}
