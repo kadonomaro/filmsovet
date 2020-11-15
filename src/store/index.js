@@ -160,10 +160,10 @@ export default new Vuex.Store({
 });
 
 
-const getFilms = (state, genre) => {
+const getFilms = (state, type) => {
 	return [...state.films]
 		.sort((a, b) => a[state.options.sort] > b[state.options.sort] ? 1 : -1)
-		.filter(film => genre === 'all' ? !film.expected && !film.viewed : film[genre])
+		.filter(film => type === 'all' ? !film.expected && !film.viewed : film[type])
 		.filter(film => state.options.genre === 'all' ? film : film.tags.includes(state.options.genre))
 		.filter(film => state.options.type === 'all' ? film : film.type === state.options.type);
 }

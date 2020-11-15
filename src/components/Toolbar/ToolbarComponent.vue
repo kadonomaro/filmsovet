@@ -125,9 +125,13 @@ export default {
 		}
 		&__label {
 			margin-right: 10px;
+			box-sizing: border-box;
 		}
 		&__select {
 			min-width: 150px;
+		}
+		&__button {
+			margin: 0 5px;
 		}
 	}
 
@@ -136,11 +140,16 @@ export default {
 		.toolbar {
 			&__inner {
 				flex-wrap: wrap;
+				margin: 0 -5px;
 			}
 			&__label {
-				width: 100%;
+				flex: 1 0 50%;
 				margin-right: 0;
-				margin-bottom: 10px;
+				padding: 0 5px;
+
+				&:not(:last-of-type) {
+					margin-bottom: 10px;
+				}
 			}
 			&__select {
 				width: 100%;
