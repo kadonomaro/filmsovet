@@ -16,8 +16,8 @@
 			<label class="toolbar__label">
 				<span class="toolbar__title">Сортировать:</span>
 				<select class="input toolbar__select" @change="changeSortHandler">
-					<option value="title" :selected="getFilmsCurrentSort === 'title'">По названию</option>
-					<option value="rating" :selected="getFilmsCurrentSort === 'rating'">По рейтингу</option>
+					<option value="title" :selected="sort === 'title'">По названию</option>
+					<option value="rating" :selected="sort === 'rating'">По рейтингу</option>
 				</select>
 			</label>
 			<button
@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import {  mapState, mapGetters } from 'vuex';
 import AppModal from '../partials/AppModal';
 import FilmNewForm from '../Film/FilmNewForm';
 
@@ -83,10 +83,12 @@ export default {
 		}
 	},
 	computed: {
+		...mapState({
+			sort: state => state.options.sort
+		}),
 		...mapGetters([
 			'getFilmsTags',
-			'getFilmsCurrentType',
-			'getFilmsCurrentSort'
+			'getFilmsCurrentType'
 		])
 	}
 }

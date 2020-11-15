@@ -146,10 +146,6 @@ export default new Vuex.Store({
 
 		getFilmsCurrentType(state) {
 			return state.options.type;
-		},
-
-		getFilmsCurrentSort(state) {
-			return state.options.sort;
 		}
 	}
 });
