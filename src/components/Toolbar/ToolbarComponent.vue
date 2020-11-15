@@ -3,7 +3,7 @@
 		<div class="toolbar__inner">
 			<label class="toolbar__label">
 				<span class="toolbar__title">Выберите жанр:</span>
-				<select class="input toolbar__select" @change="changeTypeHandler">
+				<select class="input toolbar__select" @change="changeGenreHandler">
 					<option value="all">Все</option>
 					<option
 						v-for="tag in getFilmsTags"
@@ -11,6 +11,17 @@
 						:value="tag"
 						:selected="tag === genre"
 					>{{ tag }}</option>
+				</select>
+			</label>
+			<label class="toolbar__label">
+				<span class="toolbar__title">Выберите тип:</span>
+				<select class="input toolbar__select">
+					<option value="all">Все</option>
+					<option
+						v-for="type in types"
+						:key="type"
+						:value="type"
+					>{{ type }}</option>
 				</select>
 			</label>
 			<label class="toolbar__label">
@@ -61,7 +72,7 @@ export default {
 		}
 	},
 	methods: {
-		changeTypeHandler(event) {
+		changeGenreHandler(event) {
 			this.$store.dispatch('changeFilmGenre', event.target.value);
 		},
 
@@ -85,6 +96,7 @@ export default {
 	computed: {
 		...mapState({
 			sort: state => state.options.sort,
+			types: state => state.options.types,
 			genre: state => state.options.genre
 		}),
 		...mapGetters(['getFilmsTags'])

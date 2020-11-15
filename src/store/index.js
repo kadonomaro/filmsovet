@@ -18,6 +18,7 @@ export default new Vuex.Store({
 		viewedFilms: [],
 		options: {
 			genre: 'all',
+			types: ['фильм', 'сериал'],
 			sort: 'title',
 			theme: 'dark'
 		}
