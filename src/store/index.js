@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import optionsModule from './modules/options';
 import { Database } from '../api/Database';
 import { LocalStorage } from '../api/LocalStorage';
 import { uniqueArray } from '../helpers';
@@ -15,13 +16,7 @@ export default new Vuex.Store({
   state: {
 		films: [],
 		expectedFilms: [],
-		viewedFilms: [],
-		options: {
-			genre: 'all',
-			type: 'all',
-			sort: 'title',
-			theme: 'dark'
-		}
+		viewedFilms: []
   },
   mutations: {
 		INIT_FILMS(state, { films, expectedData, viewedData }) {
@@ -64,24 +59,6 @@ export default new Vuex.Store({
 
 				viewedStorage.save(state.viewedFilms);
 			}
-		},
-
-		CHANGE_GENRE(state, genre) {
-			state.options.genre = genre;
-		},
-
-		CHANGE_TYPE(state, type) {
-			state.options.type = type
-		},
-
-		CHANGE_SORT(state, sort) {
-			state.options.sort = sort;
-		},
-
-		CHANGE_THEME(state, theme) {
-			state.options.theme = theme;
-			themeStorage.save(theme);
-			document.documentElement.setAttribute('theme', theme);
 		}
   },
   actions: {
@@ -98,12 +75,7 @@ export default new Vuex.Store({
 			commit('INIT_FILMS', { films,  expectedData, viewedData });
 		},
 
-		fetchTheme({ commit }) {
-			const theme = themeStorage.load() || 'dark';
-			commit('CHANGE_THEME', theme);
-		},
-
-		async addData({ commit }, data) {
+		async addFilm({ commit }, data) {
 			await db.add(data);
 			commit('ADD_NEW_FILM', data);
 		},
@@ -114,22 +86,6 @@ export default new Vuex.Store({
 
 		changeViewedFilm({ commit }, id) {
 			commit('CHANGE_VIEWED_FILM', id);
-		},
-
-		changeFilmGenre({ commit }, genre) {
-			commit('CHANGE_GENRE', genre);
-		},
-
-		changeFilmType({ commit }, type) {
-			commit('CHANGE_TYPE', type);
-		},
-
-		changeFilmSort({ commit }, sort) {
-			commit('CHANGE_SORT', sort);
-		},
-
-		changeTheme({ commit }, theme) {
-			commit('CHANGE_THEME', theme);
 		}
 	},
 	getters: {
@@ -156,6 +112,9 @@ export default new Vuex.Store({
 		getFilmsNames(state) {
 			return state.films.map(film => film.title.toLowerCase());
 		}
+	},
+	modules: {
+		options: optionsModule
 	}
 });
 

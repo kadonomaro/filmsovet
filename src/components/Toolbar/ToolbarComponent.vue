@@ -21,7 +21,7 @@
 						v-for="type in getFilmsTypes"
 						:key="type"
 						:value="type"
-						:selected="type === fIlmType"
+						:selected="type === filmType"
 					>{{ type }}</option>
 				</select>
 			</label>
@@ -94,14 +94,14 @@ export default {
 		},
 
 		submitHandler(payload) {
-			this.$store.dispatch('addData', payload);
+			this.$store.dispatch('addFilm', payload);
 			this.modal.visible = false;
 		}
 	},
 	computed: {
 		...mapState({
 			sort: state => state.options.sort,
-			fIlmType: state => state.options.type,
+			filmType: state => state.options.type,
 			genre: state => state.options.genre
 		}),
 		...mapGetters(['getFilmsTags', 'getFilmsTypes'])
