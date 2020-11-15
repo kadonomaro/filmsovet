@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapState } from 'vuex';
 import logo from '@/assets/logo.svg';
 import logoDark from '@/assets/logo--dark.svg';
 
@@ -20,16 +20,18 @@ export default {
 		}
 	},
 	mounted() {
-		this.getTheme === 'dark' ? this.logo = logo : this.logo = logoDark;
+		this.theme === 'dark' ? this.logo = logo : this.logo = logoDark;
 	},
 	computed: {
-		...mapGetters(['getTheme']),
+		...mapState({
+			theme: state => state.options.theme
+		}),
 		isHomePage() {
 			return this.$route.name === 'HomePage';
 		}
 	},
 	watch: {
-		getTheme(value) {
+		theme(value) {
 			value === 'dark' ? this.logo = logo : this.logo = logoDark;
 		}
 	}

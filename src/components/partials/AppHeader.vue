@@ -1,5 +1,5 @@
 <template>
-  <header class="header" :class="{ 'header--shadow': getTheme === 'light' }">
+  <header class="header" :class="{ 'header--shadow': theme === 'light' }">
 		<div class="header__logo">
 			<AppLogo />
 		</div>
@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapState } from 'vuex';
 import AppNavigation from './AppNavigation';
 import AppLogo from './AppLogo';
 
@@ -21,7 +21,9 @@ export default {
 		AppNavigation
 	},
 	computed: {
-		...mapGetters(['getTheme'])
+		...mapState({
+			theme: state => state.options.theme
+		}),
 	}
 }
 </script>

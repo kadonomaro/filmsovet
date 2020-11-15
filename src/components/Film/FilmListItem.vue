@@ -1,5 +1,5 @@
 <template>
-	<div class="film-item" :class="{ 'film-item--shadow': getTheme === 'light' }">
+	<div class="film-item" :class="{ 'film-item--shadow': theme === 'light' }">
 		<span class="film-item__rating" v-if="film.rating">{{ film.rating }}</span>
 
 		<div class="film-item__image">
@@ -47,7 +47,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapState } from 'vuex';
 import FilmTags from './FilmTags';
 
 export default {
@@ -71,7 +71,9 @@ export default {
 		}
 	},
 	computed: {
-		...mapGetters(['getTheme']),
+		...mapState({
+			theme: state => state.options.theme
+		}),
 		image() {
 			return this.film.image || 'https://via.placeholder.com/400x200?text=No+image'
 		}

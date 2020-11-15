@@ -1,5 +1,5 @@
 <template>
-	<footer class="footer" :class="{ 'footer--shadow': getTheme === 'light' }">
+	<footer class="footer" :class="{ 'footer--shadow': theme === 'light' }">
 		<div class="footer__inner">
 			<div class="footer__col">
 				<span class="footer__copy">ФильмСовет&copy; {{ new Date().getFullYear() }}</span>
@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapState } from 'vuex';
 import logo from '@/assets/airsoftware.png';
 import ThemeSwitcher from '@/components/partials/ThemeSwitcher';
 
@@ -31,7 +31,9 @@ export default {
 		}
 	},
 	computed: {
-		...mapGetters(['getTheme'])
+		...mapState({
+			theme: state => state.options.theme
+		}),
 	}
 }
 </script>

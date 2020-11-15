@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapState } from 'vuex';
 
 export default {
 	name: 'ThemeSwitcher',
@@ -23,7 +23,7 @@ export default {
 		}
 	},
 	mounted() {
-		this.checked = this.getTheme === 'dark' ? false : true;
+		this.checked = this.theme === 'dark' ? false : true;
 	},
 	methods: {
 		changeHandler() {
@@ -31,7 +31,9 @@ export default {
 		}
 	},
 	computed: {
-		...mapGetters(['getTheme'])
+		...mapState({
+			theme: state => state.options.theme
+		}),
 	}
 }
 </script>

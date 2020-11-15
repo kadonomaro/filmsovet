@@ -150,10 +150,6 @@ export default new Vuex.Store({
 
 		getFilmsCurrentSort(state) {
 			return state.options.sort;
-		},
-
-		getTheme(state) {
-			return state.options.theme;
 		}
 	}
 });
