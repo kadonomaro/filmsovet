@@ -19,7 +19,7 @@ export default {
 	},
 	methods: {
 		tagClickHandler(tag) {
-			this.$store.dispatch('changeFilmType', tag);
+			this.$store.dispatch('changeFilmGenre', tag);
 		}
 	}
 }

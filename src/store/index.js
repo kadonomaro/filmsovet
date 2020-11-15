@@ -17,7 +17,7 @@ export default new Vuex.Store({
 		expectedFilms: [],
 		viewedFilms: [],
 		options: {
-			type: 'all',
+			genre: 'all',
 			sort: 'title',
 			theme: 'dark'
 		}
@@ -65,8 +65,8 @@ export default new Vuex.Store({
 			}
 		},
 
-		CHANGE_TYPE(state, type) {
-			state.options.type = type;
+		CHANGE_GENRE(state, genre) {
+			state.options.genre = genre;
 		},
 
 		CHANGE_SORT(state, sort) {
@@ -111,8 +111,8 @@ export default new Vuex.Store({
 			commit('CHANGE_VIEWED_FILM', id);
 		},
 
-		changeFilmType({ commit }, type) {
-			commit('CHANGE_TYPE', type);
+		changeFilmGenre({ commit }, genre) {
+			commit('CHANGE_GENRE', genre);
 		},
 
 		changeFilmSort({ commit }, sort) {
@@ -142,18 +142,14 @@ export default new Vuex.Store({
 
 		getFilmsNames(state) {
 			return state.films.map(film => film.title.toLowerCase());
-		},
-
-		getFilmsCurrentType(state) {
-			return state.options.type;
 		}
 	}
 });
 
 
-const getFilms = (state, type) => {
+const getFilms = (state, genre) => {
 	return [...state.films]
 		.sort((a, b) => a[state.options.sort] > b[state.options.sort] ? 1 : -1)
-		.filter(film => type === 'all' ? !film.expected && !film.viewed : film[type])
-		.filter(film => state.options.type === 'all' ? film : film.tags.includes(state.options.type));
+		.filter(film => genre === 'all' ? !film.expected && !film.viewed : film[genre])
+		.filter(film => state.options.genre === 'all' ? film : film.tags.includes(state.options.genre));
 }

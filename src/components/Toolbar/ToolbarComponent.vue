@@ -9,7 +9,7 @@
 						v-for="tag in getFilmsTags"
 						:key="tag"
 						:value="tag"
-						:selected="tag === getFilmsCurrentType"
+						:selected="tag === genre"
 					>{{ tag }}</option>
 				</select>
 			</label>
@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import {  mapState, mapGetters } from 'vuex';
+import { mapState, mapGetters } from 'vuex';
 import AppModal from '../partials/AppModal';
 import FilmNewForm from '../Film/FilmNewForm';
 
@@ -62,7 +62,7 @@ export default {
 	},
 	methods: {
 		changeTypeHandler(event) {
-			this.$store.dispatch('changeFilmType', event.target.value);
+			this.$store.dispatch('changeFilmGenre', event.target.value);
 		},
 
 		changeSortHandler(event) {
@@ -84,12 +84,10 @@ export default {
 	},
 	computed: {
 		...mapState({
-			sort: state => state.options.sort
+			sort: state => state.options.sort,
+			genre: state => state.options.genre
 		}),
-		...mapGetters([
-			'getFilmsTags',
-			'getFilmsCurrentType'
-		])
+		...mapGetters(['getFilmsTags'])
 	}
 }
 </script>
