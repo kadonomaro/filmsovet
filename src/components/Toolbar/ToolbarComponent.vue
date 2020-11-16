@@ -130,9 +130,6 @@ export default {
 		&__select {
 			min-width: 150px;
 		}
-		&__button {
-			margin: 0 5px;
-		}
 	}
 
 
@@ -154,6 +151,9 @@ export default {
 			&__select {
 				width: 100%;
 				min-width: 120px;
+			}
+			&__button {
+				margin: 0 5px;
 			}
 		}
 	}

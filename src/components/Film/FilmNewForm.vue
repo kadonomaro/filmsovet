@@ -67,6 +67,22 @@
 			</label>
 
 			<label class="film-new__label">
+				<span class="film-new__title">Тип</span>
+				<input
+					class="input film-new__input"
+					:class="{ 'input--warning': $v.film.type.$error }"
+					type="text"
+					list="types"
+					v-model="film.type"
+					@blur="$v.film.type.$touch()"
+				>
+				<datalist id="types">
+					<option :value="type" v-for="type in getFilmsTypes" :key="type">{{ type }}</option>
+				</datalist>
+				<span class="film-new__warning" v-if="$v.film.type.$error">Поле желательно для заполнения</span>
+			</label>
+
+			<label class="film-new__label">
 				<span class="film-new__title">Жанр</span>
 				<input
 					class="input film-new__input"
@@ -112,6 +128,7 @@ export default {
 				link: '',
 				image: '',
 				rating: '',
+				type: '',
 				tags: '',
 				expected: false,
 				viewed: false
@@ -130,6 +147,7 @@ export default {
 			link: { required },
 			image: { required },
 			rating: { required },
+			type: { required },
 			tags: { required }
 		}
 	},
@@ -159,7 +177,7 @@ export default {
 		}
 	},
 	computed: {
-		...mapGetters(['getFilmsNames'])
+		...mapGetters(['getFilmsNames', 'getFilmsTypes'])
 	}
 }
 </script>
@@ -191,7 +209,7 @@ export default {
 			bottom: 3px;
 			width: 100%;
 			padding: 3px 6px;
-			color: var(--color-text);
+			color: #ffffff;
 			line-height: 14px;
 			border-bottom-left-radius: 5px;
 			border-bottom-right-radius: 5px;

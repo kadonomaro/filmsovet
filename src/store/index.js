@@ -102,11 +102,11 @@ export default new Vuex.Store({
 		},
 
 		getFilmsTags(state) {
-			return [...state.films.flatMap(film => film.tags).filter(uniqueArray).sort()];
+			return [...state.films].flatMap(film => film.tags).filter(uniqueArray).sort();
 		},
 
 		getFilmsTypes(state) {
-			return [...state.films.map(film => film.type).filter(uniqueArray).sort()];
+			return [...state.films].map(film => film.type).filter(uniqueArray).filter(Boolean).sort();
 		},
 
 		getFilmsNames(state) {
