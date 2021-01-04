@@ -153,7 +153,8 @@ export default {
 	},
 	methods: {
 		submitHandler() {
-				this.film.tags = splitString(this.film.tags).filter(Boolean);
+				this.film.tags = splitString(this.film.tags).map(tag => tag.toLowerCase()).filter(Boolean);
+				this.film.type = this.film.type.toLowerCase();
 				this.film.rating = this.film.rating.replace(',', '.');
 				this.film.id = (+new Date).toString(36);
 				this.$emit('on-submit', this.film);

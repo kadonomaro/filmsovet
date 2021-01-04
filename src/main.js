@@ -33,7 +33,7 @@ const firebaseProdConfig = {
 	appId: '1:22290152608:web:13a4a9dbaa5f733fcb9dc5'
 }
 
-firebase.initializeApp(process.env.NODE_ENV === 'production' ? firebaseProdConfig : firebaseDevConfig);
+firebase.initializeApp(process.env.NODE_ENV === 'production' ? firebaseProdConfig : firebaseProdConfig);
 const database = firebase.database();
 export { database };
 
