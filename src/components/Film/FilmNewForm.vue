@@ -122,16 +122,13 @@ export default {
 	data() {
 		return {
 			film: {
-				id: '',
 				title: '',
 				description: '',
 				link: '',
 				image: '',
 				rating: '',
 				type: '',
-				tags: '',
-				expected: false,
-				viewed: false
+				tags: ''
 			}
 		}
 	},
@@ -153,11 +150,18 @@ export default {
 	},
 	methods: {
 		submitHandler() {
-				this.film.tags = splitString(this.film.tags).map(tag => tag.toLowerCase()).filter(Boolean);
-				this.film.type = this.film.type.toLowerCase();
-				this.film.rating = this.film.rating.replace(',', '.');
-				this.film.id = (+new Date).toString(36);
-				this.$emit('on-submit', this.film);
+				this.$emit('on-submit', {
+					id: (+new Date).toString(36),
+					title: this.film.title,
+					description: this.film.description,
+					link: this.film.link,
+					image: this.film.image,
+					rating: this.film.rating.replace(',', '.'),
+					type: this.film.type = this.film.type.toLowerCase(),
+					tags: splitString(this.film.tags).map(tag => tag.toLowerCase()).filter(Boolean),
+					expected: false,
+					viewed: false
+				});
 				this.reset();
 		},
 
