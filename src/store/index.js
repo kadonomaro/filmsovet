@@ -10,7 +10,6 @@ Vue.use(Vuex);
 const db = new Database;
 const expectedStorage = new LocalStorage('expected');
 const viewedStorage = new LocalStorage('viewed');
-const themeStorage = new LocalStorage('theme');
 
 export default new Vuex.Store({
   state: {

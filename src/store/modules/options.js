@@ -23,14 +23,14 @@ export default {
 		},
 
 		CHANGE_THEME(state, theme) {
-			state.theme = theme;
+			state.theme = theme.length ? theme : 'dark';
 			themeStorage.save(theme);
 			document.documentElement.setAttribute('theme', theme);
 		}
   },
   actions: {
 		fetchTheme({ commit }) {
-			const theme = themeStorage.load() || 'dark';
+			const theme = themeStorage.load();
 			commit('CHANGE_THEME', theme);
 		},
 
