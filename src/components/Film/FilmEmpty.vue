@@ -19,7 +19,7 @@ export default {
 			font-size: 24px;
 			text-align: center;
 			border-radius: 5px;
-			border: 2px dashed var(--color-darkest);
+			border: 2px dashed var(--color-base-background);
 		}
 	}
 </style>

@@ -59,7 +59,7 @@ export default {
 			height: 30px;
 			padding: 2px;
 			background-color: var(--color-text);
-			border: 2px solid var(--color-darkest);
+			border: 2px solid var(--color-base-background);
 			border-radius: 100px;
 			box-sizing: border-box;
 			cursor: pointer;
@@ -70,7 +70,7 @@ export default {
 				top: 50%;
 				width: 22px;
 				height: 22px;
-				background-color: var(--color-darkest);
+				background-color: var(--color-base-background);
 				border-radius: 50%;
 				transform: translate(0, -50%);
 				transition: transform 0.1s ease-in;

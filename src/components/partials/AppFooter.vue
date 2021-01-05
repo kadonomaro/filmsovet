@@ -42,7 +42,7 @@ export default {
 	.footer {
 		padding: 15px 20px;
 		color: var(--color-text);
-		background-color: var(--color-darkest);
+		background-color: var(--color-base-background);
 		&__inner {
 			display: flex;
 			justify-content: space-between;

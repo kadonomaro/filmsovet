@@ -5,21 +5,19 @@
 	--color-accent-hover: #dfa600;
 	--color-danger-hover: #ff2b51;
 
-	--color-darkest: #101010;
-	--color-dark-gray: #141414;
+	--color-background: #141414;
+	--color-base-background: #101010;
+	--color-body-background: #202020;
 	--color-medium-gray: #a0a0a0;
 	--color-light-gray: #e4e4e4;
-	--color-background: #202020;
 	--color-text: #ececec;
 	--color-input-text: #303030;
 }
 
 
 [theme="light"] {
-	--color-darkest: #dadada;
-	--color-dark-gray: #ebebeb;
-	--color-medium-gray: #a0a0a0;
-	--color-light-gray: #e4e4e4;
-	--color-background: #f1f1f1;
+	--color-background: #ebebeb;
+	--color-base-background: #dadada;
+	--color-body-background: #f1f1f1;
 	--color-text: #303030;
 }

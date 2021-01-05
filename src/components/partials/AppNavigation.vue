@@ -143,7 +143,7 @@ export default {
 				right: 0;
 				display: block;
 				padding: 10px 15px;
-				background-color: var(--color-dark-gray);
+				background-color: var(--color-background);
 				transform: translateX(-100%);
 				transition: transform .3s ease-in;
 				will-change: transform;

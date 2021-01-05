@@ -33,7 +33,7 @@ export default {
 		position: relative;
 		display: flex;
 		padding: 20px 15px;
-		background-color: var(--color-darkest);
+		background-color: var(--color-base-background);
 		&__logo {
 			position: absolute;
 			left: 15px;

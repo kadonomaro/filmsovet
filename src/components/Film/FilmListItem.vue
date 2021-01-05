@@ -89,7 +89,7 @@ export default {
 		display: flex;
 		flex-direction: column;
 		height: 100%;
-		background-color: var(--color-dark-gray);
+		background-color: var(--color-background);
 		&:hover &__image-img {
 			transform: scale(1.03);
 		}
@@ -128,6 +128,7 @@ export default {
 			width: $square;
 			height: $square;
 			padding: 5px;
+			color: #ffffff;
 			font-size: 32px;
 			font-weight: 600;
 			line-height: $square;
@@ -138,7 +139,7 @@ export default {
 		&__controls {
 			display: flex;
 			padding: 10px;
-			background-color: var(--color-darkest);
+			background-color: var(--color-base-background);
 		}
 		&__button {
 			&:not(:last-child) {

@@ -53,7 +53,7 @@ export default {
 			outline: none;
 			&:hover,
 			&:focus {
-				color: var(--color-darkest);
+				color: var(--color-base-background);
 				background-color: var(--color-text);
 			}
 		}
