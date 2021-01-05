@@ -31,11 +31,6 @@ export default {
 	display: flex;
 	flex-direction: column;
 	min-height: 100vh;
-	font-family: Jost, Helvetica, Arial, sans-serif;
-	letter-spacing: 0.03em;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: var(--color-text);
 }
 
 .content {

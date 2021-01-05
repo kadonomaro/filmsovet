@@ -129,7 +129,7 @@ export default {
 			height: $square;
 			padding: 5px;
 			font-size: 32px;
-			font-weight: bold;
+			font-weight: 600;
 			line-height: $square;
 			text-align: center;
 			background-color: var(--color-accent);

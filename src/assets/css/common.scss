@@ -1,6 +1,11 @@
 body {
   margin: 0;
   padding: 0;
+	color: var(--color-text);
+	font-family: Jost, Helvetica, Arial, sans-serif;
+	letter-spacing: 0.03em;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 	background-color: var(--color-background);
 }
 

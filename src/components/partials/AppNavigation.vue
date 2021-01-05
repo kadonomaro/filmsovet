@@ -100,13 +100,19 @@ export default {
 			padding: 5px 0;
 			color: var(--color-text);
 			font-size: 24px;
+			font-weight: 600;
 			text-decoration: none;
 			letter-spacing: 0.03em;
 			border-bottom: 3px solid transparent;
-			transition: border-color 0.1s ease-in;
+			transition: border-color 0.1s ease-in, opacity 0.1s ease-in;
+			opacity: 0.7;
+			&:hover {
+				opacity: 1;
+			}
 		}
 		&__link--active {
 			border-color: var(--color-accent);
+			opacity: 1;
 		}
 	}
 
