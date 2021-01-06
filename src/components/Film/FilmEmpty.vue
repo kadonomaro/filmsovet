@@ -18,7 +18,7 @@ export default {
 			color: var(--color-text);
 			font-size: 24px;
 			text-align: center;
-			border-radius: 5px;
+			border-radius: var(--border-radius);
 			border: 2px dashed var(--color-base-background);
 		}
 	}

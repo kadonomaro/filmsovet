@@ -47,7 +47,7 @@ export default {
 			font-size: inherit;
 			background-color: transparent;
 			border: none;
-			border-radius: 5px;
+			border-radius: var(--border-radius);
 			transition: color 0.1s ease-in, background-color 0.1s ease-in;
 			cursor: pointer;
 			outline: none;

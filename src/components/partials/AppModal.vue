@@ -54,6 +54,7 @@ export default {
     min-width: 450px;
 		max-width: 600px;
 		color: #303030;
+		border-radius: var(--border-radius);
 		background-color: #ffffff;
     &__header,
     &__footer {

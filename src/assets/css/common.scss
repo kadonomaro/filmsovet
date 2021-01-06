@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
 	color: var(--color-text);
-	font-family: Jost, Helvetica, Arial, sans-serif;
+	font-family: var(--font-main);
 	letter-spacing: 0.03em;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;

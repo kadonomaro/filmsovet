@@ -15,7 +15,8 @@ export default new Vuex.Store({
   state: {
 		films: [],
 		expectedFilms: [],
-		viewedFilms: []
+		viewedFilms: [],
+		loaded: false
   },
   mutations: {
 		INIT_FILMS(state, { films, expectedData, viewedData }) {
@@ -58,6 +59,10 @@ export default new Vuex.Store({
 
 				viewedStorage.save(state.viewedFilms);
 			}
+		},
+
+		SET_LOADED_STATUS(state, status) {
+			state.loaded = status;
 		}
   },
   actions: {
@@ -72,6 +77,7 @@ export default new Vuex.Store({
 				return { ...film, ...expected, ...viewed };
 			});
 			commit('INIT_FILMS', { films,  expectedData, viewedData });
+			commit('SET_LOADED_STATUS', true);
 		},
 
 		async addFilm({ commit }, data) {

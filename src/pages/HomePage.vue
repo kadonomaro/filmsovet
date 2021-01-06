@@ -2,8 +2,9 @@
   <div class="page">
     <h1 class="page__title">Советую посмотреть</h1>
 		<ToolbarComponent />
+		<AppPreloader v-if="!loaded"/>
 		<FilmList :list="items" v-if="getFilms.length"/>
-		<FilmEmpty v-else/>
+		<FilmEmpty v-if="loaded && getFilms.length"/>
 		<paginate
       v-if="getFilms.length > pageSize"
       v-model="page"
@@ -18,9 +19,10 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import {mapGetters, mapState} from 'vuex';
 import FilmList from '@/components/Film/FilmList';
 import FilmEmpty from '@/components/Film/FilmEmpty';
+import AppPreloader from "@/components/partials/AppPreloader";
 import ToolbarComponent from '@/components/Toolbar/ToolbarComponent';
 import paginationMixin from '@/mixins/pagination.mixin';
 
@@ -30,13 +32,17 @@ export default {
 	components: {
 		FilmList,
 		FilmEmpty,
+		AppPreloader,
 		ToolbarComponent
 	},
 	mounted() {
 		this.setupPagination(this.getFilms);
 	},
 	computed: {
-		...mapGetters(['getFilms'])
+		...mapGetters(['getFilms']),
+		...mapState({
+			loaded: state => state.loaded
+		}),
 	},
 	watch: {
 		getFilms(films) {
