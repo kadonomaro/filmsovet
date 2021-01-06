@@ -4,7 +4,7 @@
 		<ToolbarComponent />
 		<AppPreloader v-if="!loaded"/>
 		<FilmList :list="items" v-if="getFilms.length"/>
-		<FilmEmpty v-if="loaded && getFilms.length"/>
+		<FilmEmpty v-if="loaded && !getFilms.length"/>
 		<paginate
       v-if="getFilms.length > pageSize"
       v-model="page"
