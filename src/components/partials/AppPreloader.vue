@@ -1,21 +1,20 @@
 <template>
 	<div class="preloader">
 		<div class="preloader__icon">
-			<svg width="200" height="200" fill="none" xmlns="http://www.w3.org/2000/svg">
-				<g class="preloader__icon-tail">
-					<path d="M64.8 72c-28.6 31.6-56.6 67-21.2 103" stroke="#454545" stroke-width="7" stroke-miterlimit="10"
-								stroke-linecap="round" stroke-linejoin="round"/>
-					<path stroke="none" d="M.5.5h199v199H.5z"/>
+			<svg width="120" height="120" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<g clip-path="url(#clip0)">
+					<g class="preloader__icon-tail">
+						<path d="M38.88 43.2C21.72 62.16 4.92 83.4 26.16 105" stroke="#454545" stroke-width="3" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+						<path d="M.5.5h119v119H.5z"/>
+					</g>
+					<path d="M60 87c14.9117 0 27-12.0883 27-27S74.9117 33 60 33 33 45.0883 33 60s12.0883 27 27 27z" fill="#909090" stroke="#454545" stroke-width="3" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+					<path class="preloader__icon-body" d="M60 15c-24.84 0-45 20.16-45 45s20.16 45 45 45 45-20.16 45-45-20.16-45-45-45zm18.84 23.76c4.32-2.52 9.84-.96 12.24 3.24 2.52 4.32.96 9.84-3.24 12.24-4.2 2.4-9.84.96-12.24-3.24-2.52-4.32-1.08-9.84 3.24-12.24zM41.16 81.24c-4.32 2.52-9.84.96-12.24-3.24-2.52-4.32-.96-9.84 3.24-12.24C36.48 63.24 42 64.8 44.4 69c2.52 4.32 1.08 9.84-3.24 12.24zM44.4 51c-2.52 4.32-8.04 5.76-12.24 3.24-4.2-2.52-5.88-7.92-3.36-12.24s8.04-5.76 12.24-3.24c4.44 2.4 5.88 7.92 3.36 12.24zM60 96c-4.92 0-9-4.08-9-9s4.08-9 9-9 9 4.08 9 9-4.08 9-9 9zm-6-36c0-3.36 2.64-6 6-6s6 2.64 6 6-2.64 6-6 6-6-2.64-6-6zm6-18c-4.92 0-9-4.08-9-9s4.08-9 9-9 9 4.08 9 9-4.08 9-9 9zm31.2 36c-2.52 4.32-8.04 5.76-12.24 3.24-4.2-2.52-5.76-8.04-3.24-12.24 2.52-4.32 8.04-5.76 12.24-3.24 4.2 2.4 5.76 7.92 3.24 12.24z" fill="#D2D2D2" stroke="#454545" stroke-width="3" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
 				</g>
-				<path
-					d="M100 145c24.853 0 45-20.147 45-45 0-24.8528-20.147-45-45-45-24.8528 0-45 20.1472-45 45 0 24.853 20.1472 45 45 45z"
-					fill="#909090" stroke="#454545" stroke-width="7" stroke-miterlimit="10" stroke-linecap="round"
-					stroke-linejoin="round"/>
-				<path
-					class="preloader__icon-body"
-					d="M100 25c-41.4 0-75 33.6-75 75s33.6 75 75 75 75-33.6 75-75-33.6-75-75-75zm31.4 39.6c7.2-4.2 16.4-1.6 20.4 5.4 4.2 7.2 1.6 16.4-5.4 20.4S130 92 126 85c-4.2-7.2-1.8-16.4 5.4-20.4zm-62.8 70.8c-7.2 4.2-16.4 1.6-20.4-5.4-4.2-7.2-1.6-16.4 5.4-20.4C60.8 105.4 70 108 74 115c4.2 7.2 1.8 16.4-5.4 20.4zM74 85c-4.2 7.2-13.4 9.6-20.4 5.4-7-4.2-9.8-13.2-5.6-20.4 4.2-7.2 13.4-9.6 20.4-5.4 7.4 4 9.8 13.2 5.6 20.4zm26 75c-8.2 0-15-6.8-15-15s6.8-15 15-15 15 6.8 15 15-6.8 15-15 15zm-10-60c0-5.6 4.4-10 10-10s10 4.4 10 10-4.4 10-10 10-10-4.4-10-10zm10-30c-8.2 0-15-6.8-15-15s6.8-15 15-15 15 6.8 15 15-6.8 15-15 15zm52 60c-4.2 7.2-13.4 9.6-20.4 5.4-7-4.2-9.6-13.4-5.4-20.4 4.2-7.2 13.4-9.6 20.4-5.4 7 4 9.6 13.2 5.4 20.4z"
-					fill="#D2D2D2" stroke="#454545" stroke-width="7" stroke-miterlimit="10" stroke-linecap="round"
-					stroke-linejoin="round"/>
+				<defs>
+					<clipPath id="clip0">
+						<path fill="#fff" d="M0 0h120v120H0z"/>
+					</clipPath>
+				</defs>
 			</svg>
 		</div>
 	</div>
@@ -29,8 +28,12 @@ export default {
 
 <style lang="scss">
 .preloader {
-	display: flex;
-	justify-content: center;
+	padding: 10px 0;
+	&__icon {
+		text-align: center;
+		border-radius: var(--border-radius);
+		border: 2px dashed var(--color-base-background);
+	}
 	&__icon-body {
 		transform-origin: center;
 		animation: spinner 2s ease-in-out infinite;
