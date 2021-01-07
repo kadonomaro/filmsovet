@@ -13,6 +13,7 @@ export default {
     pageChangeHandler(page) {
       this.$router.push(`${this.$route.path}?page=${page}`);
       this.items = this.allItems[page - 1] || this.allItems[0];
+      window.scrollTo({ top: 0 });
     },
     setupPagination(allItems) {
       this.allItems = chunk(allItems, this.pageSize);

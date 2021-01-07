@@ -93,7 +93,7 @@ export default {
 			list-style: none;
 		}
 		&__item {
-			margin: 0 10px;
+			margin: 0 20px;
 		}
 		&__link {
 			display: block;
@@ -152,11 +152,11 @@ export default {
 				transform: translateX(0);
 			}
 			&__item {
-				margin: 0;
+				margin: 0 0 10px;
 			}
 			&__link {
 				display: inline-block;
-				font-size: 16px;
+				font-size: 18px;
 			}
 		}
 	}
