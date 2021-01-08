@@ -1,8 +1,10 @@
+import {isMobile} from "@/helpers";
+
 export default {
   data() {
     return {
       page: +this.$route.query.page || 1,
-      pageSize: 12,
+      pageSize: isMobile() ? 8 : 12,
       pageRange: 3,
       pageCount: 0,
       allItems: [],
@@ -13,7 +15,10 @@ export default {
     pageChangeHandler(page) {
       this.$router.push(`${this.$route.path}?page=${page}`);
       this.items = this.allItems[page - 1] || this.allItems[0];
-      window.scrollTo({ top: 0 });
+      window.scrollTo({
+				top: 0,
+				behavior: isMobile() ? 'auto' : 'smooth'
+      });
     },
     setupPagination(allItems) {
       this.allItems = chunk(allItems, this.pageSize);
