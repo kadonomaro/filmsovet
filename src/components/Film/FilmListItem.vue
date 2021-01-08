@@ -82,14 +82,16 @@ export default {
 </script>
 
 <style lang="scss">
-	$square: 50px;
+	$square: 35px;
 
 	.film-item {
 		position: relative;
 		display: flex;
 		flex-direction: column;
 		height: 100%;
+		border-radius: var(--border-radius);
 		background-color: var(--color-background);
+		overflow: hidden;
 		&:hover &__image-img {
 			transform: scale(1.03);
 		}
@@ -123,16 +125,17 @@ export default {
 		&__rating {
 			position: absolute;
 			z-index: 9;
-			top: 0;
-			right: 0;
+			top: 10px;
+			right: 10px;
 			width: $square;
 			height: $square;
 			padding: 5px;
 			color: #ffffff;
-			font-size: 32px;
+			font-size: 24px;
 			font-weight: 600;
 			line-height: $square;
 			text-align: center;
+			border-radius: var(--border-radius);
 			background-color: var(--color-accent);
 			pointer-events: none;
 		}

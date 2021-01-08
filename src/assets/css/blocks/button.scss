@@ -2,8 +2,7 @@
 	width: 60px;
 	height: 40px;
 	background-color: var(--color-accent);
-	background-size: 25px;
-	background-position: center;
+	background-image: url('~@/assets/icons/sprite.svg');
 	background-repeat: no-repeat;
 	border: none;
 	border-radius: var(--border-radius);
@@ -31,14 +30,14 @@
 	height: auto;
 }
 .button--icon-bookmark {
-	background-image: url('~@/assets/icons/bookmark.svg');
+	background-position: -207.5px 50%;
 }
 .button--icon-check {
-	background-image: url('~@/assets/icons/check.svg');
+	background-position: -57.5px 50%;
 }
 .button--icon-plus {
-	background-image: url('~@/assets/icons/plus.svg');
+	background-position: 17.5px 50%;
 }
 .button--icon-cancel {
-	background-image: url('~@/assets/icons/cancel.svg');
+	background-position: -132.5px 50%;
 }
