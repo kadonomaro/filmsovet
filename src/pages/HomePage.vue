@@ -43,10 +43,13 @@ export default {
 		...mapState({
 			loaded: state => state.loaded
 		}),
+		getFilmsLength() {
+			return this.getFilms.length;
+		}
 	},
 	watch: {
-		getFilms(films) {
-			this.setupPagination(films);
+		getFilmsLength() {
+			this.setupPagination(this.getFilms);
 		}
 	},
 	metaInfo() {
